@@ -1,0 +1,227 @@
+{
+	"users": [
+		{
+			"username": "aki",
+			"password": "aki1",
+			"fullname": [
+				{
+					"firstname": "Aki",
+					"lastname": "Berglund"
+				}
+			],
+			"clothes": [
+				{
+					"id": 1,
+					"color": "Grey",
+					"category": "Tops",
+					"imageUrl": "/images/IMG_8376-removebg-preview.png",
+					"desc": "Trasher size M, bought in 2022"
+				},
+				{
+					"id": 2,
+					"color": "Shoes",
+					"category": "Tops",
+					"imageUrl": "/images/IMG_8383-removebg-preview.png",
+					"desc": "Axel Arigato marathon runners, bought in 2022"
+				},
+				{
+					"id": 3,
+					"color": "Black",
+					"category": "Shoes",
+					"imageUrl": "/images/IMG_8377-removebg-preview.png",
+					"desc": "Godspeed cap, 2020"
+				},
+				{
+					"id": 4,
+					"color": "Black",
+					"category": "Tops",
+					"imageUrl": "/images/shirt8.png",
+					"desc": "Nike tee, bought in 2022"
+				},
+				{
+					"id": 5,
+					"color": "Multi",
+					"category": "Shoes",
+					"imageUrl": "/images/IMG_8379-removebg-preview.png",
+					"desc": "Nike dunks, 2022"
+				}
+			],
+			"fits": [
+				{
+					"id": 1,
+					"imageUrl": "/images/fitpic7.jpg"
+				},
+				{
+					"id": 2,
+					"imageUrl": "/images/fitpic8.jpeg"
+				},
+				{
+					"id": 3,
+					"imageUrl": "/images/placeholder2.jpg"
+				},
+				{
+					"id": 4,
+					"imageUrl": "/images/placeholder3.jpg"
+				}
+			]
+		},
+		{
+			"username": "sara",
+			"password": "sara1",
+			"fullname": [
+				{
+					"firstname": "Sara",
+					"lastname": "Koivusilta"
+				}
+			],
+			"clothes": [
+				{
+					"id": 1,
+					"color": "Grey",
+					"category": "Tops",
+					"imageUrl": "/images/IMG_8393-removebg-preview-2.png"
+				},
+				{
+					"id": 2,
+					"color": "White",
+					"category": "Shoes",
+					"imageUrl": "/images/IMG_8403-removebg-preview.png"
+				},
+				{
+					"id": 3,
+					"color": "Brown",
+					"category": "Accessories",
+					"imageUrl": "/images/IMG_8394-removebg-preview.png"
+				},
+				{
+					"id": 4,
+					"color": "Beige",
+					"category": "Hats",
+					"imageUrl": "/images/IMG_8380-removebg-preview.png"
+				},
+				{
+					"id": 5,
+					"color": "",
+					"category": "Shoes",
+					"imageUrl": "/images/shoes1.png"
+				},
+				{
+					"id": 6,
+					"color": "",
+					"category": "Overall",
+					"imageUrl": "/images/overall1.png"
+				},
+				{
+					"id": 7,
+					"color": "",
+					"category": "Overall",
+					"imageUrl": "/images/overall2.png"
+				},
+				{
+					"id": 8,
+					"color": "",
+					"category": "Bottoms",
+					"imageUrl": "/images/pants1.png"
+				},
+				{
+					"id": 9,
+					"color": "",
+					"category": "Bottoms",
+					"imageUrl": "/images/pants2.png"
+				},
+				{
+					"id": 10,
+					"color": "",
+					"category": "Shoes",
+					"imageUrl": "/images/shoes2.png"
+				},
+				{
+					"id": 11,
+					"color": "",
+					"category": "Tops",
+					"imageUrl": "/images/shirt1.png"
+				},
+				{
+					"id": 12,
+					"color": "",
+					"category": "Overall",
+					"imageUrl": "/images/overall3.png"
+				},
+				{
+					"id": 13,
+					"color": "",
+					"category": "Tops",
+					"imageUrl": "/images/shirt2.png"
+				},
+				{
+					"id": 14,
+					"color": "",
+					"category": "Tops",
+					"imageUrl": "/images/shirt3.png"
+				},
+				{
+					"id": 15,
+					"color": "",
+					"category": "Tops",
+					"imageUrl": "/images/shirt4.png"
+				},
+				{
+					"id": 16,
+					"color": "",
+					"category": "Bottoms",
+					"imageUrl": "/images/pants3.png"
+				},
+				{
+					"id": 17,
+					"color": "",
+					"category": "Tops",
+					"imageUrl": "/images/shirt5.png"
+				},
+				{
+					"id": 18,
+					"color": "",
+					"category": "Bottoms",
+					"imageUrl": "/images/pants4.png"
+				},
+				{
+					"id": 19,
+					"color": "",
+					"category": "Tops",
+					"imageUrl": "/images/shirt6.png"
+				},
+				{
+					"id": 20,
+					"color": "",
+					"category": "Tops",
+					"imageUrl": "/images/shirt8.png"
+				}
+			],
+			"fits": [
+				{
+					"id": 1,
+					"imageUrl": "/images/fitpic1.jpg"
+				},
+				{
+					"id": 2,
+					"imageUrl": "/images/fitpic2.jpg"
+				},
+				{
+					"id": 3,
+					"imageUrl": "/images/fitpic3.jpg"
+				},
+				{
+					"id": 4,
+					"imageUrl": "/images/fitpic4.jpg"
+				},
+				{
+					"id": 5,
+					"imageUrl": "/images/fitpic5.jpg"
+				},
+				{
+					"id": 6,
+					"imageUrl": "/images/fitpic6.jpg"
+				}
+			]
+		}
+	]
+}
