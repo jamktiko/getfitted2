@@ -17,7 +17,7 @@
 /* jee*/
 	async function logIn() {
 		// Fetch user data
-		fetch('http://localhost:5174/backend.json')
+		fetch('http://localhost:5173/backend.json')
 			.then((response) => response.json())
 			.then((data) => {
 				const user = data.users.find((u) => u.username === usersName);

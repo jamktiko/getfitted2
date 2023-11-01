@@ -51,7 +51,7 @@
 	}
 </script>
 
-<main>
+<main class="p-2 pb-16">
 	{#if $u.userClothes.length > 0}
 		{#if naytaFiltteri}
 			<FiltteriModal
@@ -76,10 +76,15 @@
 				<VaateModaali {valittuItemi} on:close={handleSuljeVaate} />
 			</div>
 		{:else}
-			<button class="filtteri" on:click={() => (naytaFiltteri = true)}>Filter</button>
-			<div class="clothing-grid">
+			<div class="flex flex-col items-center">
+				<button
+					class="text-gray-500 bg-white border border-black rounded-full py-2 px-8 mt-4 font-mono text-base"
+					on:click={() => (naytaFiltteri = true)}>Filter</button
+				>
+			</div>
+			<div class="grid grid-cols-2 gap-8 mt-4">
 				{#each filteredVaatteet as userClothing (userClothing.id)}
-					<div on:click={() => handleVaateClick(userClothing)}>
+					<div on:click={() => handleVaateClick(userClothing)} class="p-2">
 						<UserClothing {userClothing} />
 					</div>
 				{/each}

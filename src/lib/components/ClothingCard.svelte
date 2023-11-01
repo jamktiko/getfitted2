@@ -7,7 +7,7 @@
     <img src={userClothing.imageUrl} alt="Vaatekappale" />
   </div>
   
-  <style>
+  <!-- <style>
     .vaate {
       border: 1px solid rgb (10, 10, 10);
       padding: 10px;
@@ -21,5 +21,5 @@
       /*max-height: 200px;
         margin-bottom: 10px;*/
     }
-  </style>
+  </style> -->
   
