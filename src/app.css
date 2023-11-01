@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.heebo {
+		font-family: theme('fontFamily.heebo');
+	}
+	.source {
+		font-family: theme('fontFamily.source');
+	}
+	.logofont {
+		font-family: theme('fontFamily.logofont');
+	}
+	.buttonround {
+		background-color: transparent;
+		border: 1px solid rgba(64, 64, 64, 1);
+		color: rgb(124, 120, 120);
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 0.8em;
+		margin-right: 2em;
+		cursor: pointer;
+		border-radius: 30px;
+		padding: 0.6em 2.4em;
+	}
+	.button2 {
+		background-color: transparent;
+		border: none;
+		color: rgba(90, 90, 90, 1);
+		padding-bottom: 0.5em;
+		padding-top: 0.5em;
+		font-weight: bold;
+		font-size: 1.1em;
+	}
+	.plus {
+		color: theme('colors.pink2');
+		font-weight: bold;
+	}
+}

@@ -52,6 +52,12 @@
 </script>
 
 <main>
+	<div class="flex flex-col items-center">
+		<button
+			class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+			on:click={() => (naytaFiltteri = true)}>Filter</button
+		>
+	</div>
 	{#if $u.userClothes.length > 0}
 		{#if naytaFiltteri}
 			<FiltteriModal
@@ -76,7 +82,6 @@
 				<VaateModaali {valittuItemi} on:close={handleSuljeVaate} />
 			</div>
 		{:else}
-			<button class="filtteri" on:click={() => (naytaFiltteri = true)}>Filter</button>
 			<div class="clothing-grid">
 				{#each filteredVaatteet as userClothing (userClothing.id)}
 					<div on:click={() => handleVaateClick(userClothing)}>
@@ -103,7 +108,7 @@
 		flex-wrap: wrap;
 		margin-top: 1em;
 	}
-	.filtteri {
+	/* .filtteri {
 		background-color: transparent;
 		border: 1px solid rgba(64, 64, 64, 1);
 		color: rgb(124, 120, 120);
@@ -116,5 +121,5 @@
 		padding: 0.6em 2.4em;
 		font-family: 'Source Code Pro', monospace;
 		margin-top: 0.5em;
-	}
+	} */
 </style>

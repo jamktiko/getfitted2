@@ -58,10 +58,14 @@
 	}
 </script>
 
-<div class="vaatenapi">
-	<button class="napit" on:click={() => goto('/carousel')}>Tops & Bottoms</button>
-	<button class="napit" on:click={() => carousels.forEach((_, index) => mixAndMatch(index))}
-		>Mix & Match</button
+<div class="flex justify-evenly mt-2">
+	<button
+		class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+		on:click={() => goto('/carousel')}>Tops & Bottoms</button
+	>
+	<button
+		class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+		on:click={() => carousels.forEach((_, index) => mixAndMatch(index))}>Mix & Match</button
 	>
 </div>
 <div class="carousel-container">
@@ -89,9 +93,11 @@
 		</div>
 	{/each}
 </div>
-<div class="alanapit">
+<div class="flex flex-col mt-2">
 	<button>
-		<p class="choose">CHOOSE EXTRAS</p>
+		<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
+			CHOOSE EXTRAS
+		</p>
 		<p class="nuoli"><i class="arrow" /></p>
 	</button>
 </div>
@@ -149,7 +155,7 @@
 	.next-image {
 		transform: translateX(90%);
 	}
-	.napit {
+	/* 	.napit {
 		background-color: transparent;
 		border: 1px solid rgba(64, 64, 64, 1);
 		color: rgb(124, 120, 120);
@@ -162,13 +168,13 @@
 		padding: 0.6em 1.5em;
 		margin-bottom: 1.5em;
 		font-family: 'Source Code Pro', monospace;
-	}
-	.vaatenapi {
+	} */
+	/* .vaatenapi {
 		display: flex;
 		justify-content: space-evenly;
 		margin-top: 0.5em;
-	}
-	.choose {
+	} */
+	/* 	.choose {
 		font-family: 'Heebo', sans-serif;
 		text-decoration: none;
 		background-color: transparent;
@@ -181,7 +187,7 @@
 		cursor: pointer;
 		font-size: 0.9em;
 		order: 1;
-	}
+	} */
 	.arrow {
 		border: solid #d499ff;
 		border-radius: 15%;
@@ -199,16 +205,16 @@
 		cursor: pointer;
 		order: 2;
 		margin: 0;
-		padding-top: 0.6em;
+		/* padding-top: 0.6em; */
 	}
-	.alanapit {
+	/* .alanapit {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-	}
-	button {
+	} */
+	/* 	button {
 		background-color: transparent;
 		text-decoration: none;
 		border: none;
-	}
+	} */
 </style>
