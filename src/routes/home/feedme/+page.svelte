@@ -26,17 +26,21 @@
 	}
 </script>
 
-<main>
+<main class="p-2 pb-16 m-4">
 	{#if valittuKuva}
 		<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
 	{:else if empty()}
-		<div class="kontti">
-			<button class="inactive" on:click={() => goto('/home')}> All</button>
+		<div class="flex">
+			<button class="flex-1 p-4 m-4 font-mono text-sm text-black" on:click={() => goto('/home')}>
+				All</button
+			>
 			<!-- Button mikä vie sivulle joka näyttää kaikkien käyttäjien fitit -->
-			<button class="active">Me</button>
+			<button class="flex-1 p-4 m-4 font-mono text-sm text-purple-500 border-b border-purple-500"
+				>Me</button
+			>
 			<!-- button mikä näyttää missä käyttäjä on tällä hetkellä -->
 		</div>
-		<div class="fitti-grid">
+		<div class="grid grid-cols-2 gap-4 mt-4">
 			{#each $u.userFits as userFit (userFit.id)}
 				<div on:click={() => handleFittiClick(userFit)}>
 					<UserFit {userFit} />
@@ -44,21 +48,28 @@
 			{/each}
 		</div>
 	{:else}
-		<div class="kontti">
-			<button class="inactive" on:click={() => goto('/home')}> All</button>
+		<div class="flex">
+			<button class="flex-1 p-4 m-4 font-mono text-sm text-black" on:click={() => goto('/home')}>
+				All</button
+			>
 			<!-- Button mikä vie sivulle joka näyttää kaikkien käyttäjien fitit -->
-			<button class="active">Me</button>
+			<button class="flex-1 p-4 m-4 font-mono text-sm text-purple-500 border-b border-purple-500"
+				>Me</button
+			>
 			<!-- button mikä näyttää missä käyttäjä on tällä hetkellä -->
 		</div>
-		<div class="nopost">
+		<div class="flex flex-col justify-center items-center font-mono space-y-4 m-0 p-0 h-96">
 			<p>Oops... No posts yet, wanna make one?</p>
+			<button
+            class="text-gray-500 bg-white border border-black rounded-full py-2 px-8 font-bold text-lg flex items-center"
+            on:click={() => goto('/camera')}>Add <span class="plus">+</span></button
+			>
 		</div>
-		<button class="add">Add <span class="plus">+</span></button>
 	{/if}
 </main>
 
 <style>
-	.nopost {
+	/* .nopost {
 		margin-top: 12em;
 		margin-bottom: 2em;
 		font-family: 'Source Code Pro', monospace;
@@ -73,25 +84,11 @@
 		padding: 0.6em 2.1em;
 		font-weight: bold;
 		font-size: 17px;
-	}
+	} */
 	.plus {
 		color: #c97eff;
 	}
-	.fitti-grid {
-		/* display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px; /* väli vaatteiden välillä */
-		display: grid;
-		justify-content: center;
-		grid-template-columns: repeat(2, 1fr);
-		align-items: center;
-		align-content: center;
-		gap: 1.6875rem;
-		align-self: stretch;
-		flex-wrap: wrap;
-		margin-top: 1em;
-	}
-	.kontti {
+	/* .kontti {
 		display: flex;
 	}
 	.active {
@@ -121,8 +118,6 @@
 		cursor: pointer;
 		font-size: 1em;
 		color: #000000;
-	}
-	main {
-		padding: 8px;
-	}
+	} */
+
 </style>

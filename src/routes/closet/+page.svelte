@@ -51,7 +51,7 @@
 	}
 </script>
 
-<main>
+<main class="p-2 pb-16">
 	<div class="flex flex-col items-center">
 		<button
 			class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
@@ -82,9 +82,10 @@
 				<VaateModaali {valittuItemi} on:close={handleSuljeVaate} />
 			</div>
 		{:else}
+			<button class="filtteri" on:click={() => (naytaFiltteri = true)}>Filter</button>
 			<div class="clothing-grid">
 				{#each filteredVaatteet as userClothing (userClothing.id)}
-					<div on:click={() => handleVaateClick(userClothing)}>
+					<div on:click={() => handleVaateClick(userClothing)} class="p-2">
 						<UserClothing {userClothing} />
 					</div>
 				{/each}

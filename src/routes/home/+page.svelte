@@ -20,13 +20,13 @@
     }
   </script>
   
-  <main class="p-2">
+  <main class="p-2 pb-16 m-4">
     {#if valittuKuva}
         <InspectFit {valittuKuva} on:close={handleSuljeFitti} />
     {:else}
     <div class="flex">
-      <button class="flex-1 p-4 m-4 font-mono text-lg text-purple-500 border-b border-purple-500">All</button>
-      <button class="flex-1 p-4 m-4 font-mono text-lg text-black" on:click={() => goto('/home/feedme')}>Me</button>
+      <button class="flex-1 p-4 m-4 font-mono text-sm text-purple-500 border-b border-purple-500">All</button>
+      <button class="flex-1 p-4 m-4 font-mono text-sm text-black" on:click={() => goto('/home/feedme')}>Me</button>
     </div>
     <div class="grid grid-cols-2 gap-4 mt-4">
       <!-- each lohko käy läpi kaikkien käyttäjien fitit ja näyttää niiden kuvat -->

@@ -79,25 +79,25 @@
 					"id": 1,
 					"color": "Grey",
 					"category": "Tops",
-					"imageUrl": "/images/IMG_8393-removebg-preview-2.png"
+					"imageUrl": "/images/shirt7.png"
 				},
 				{
 					"id": 2,
 					"color": "White",
 					"category": "Shoes",
-					"imageUrl": "/images/IMG_8403-removebg-preview.png"
+					"imageUrl": "/images/shoes4.png"
 				},
 				{
 					"id": 3,
 					"color": "Brown",
 					"category": "Accessories",
-					"imageUrl": "/images/IMG_8394-removebg-preview.png"
+					"imageUrl": "/images/bracelet1.png"
 				},
 				{
 					"id": 4,
 					"color": "Beige",
 					"category": "Hats",
-					"imageUrl": "/images/IMG_8380-removebg-preview.png"
+					"imageUrl": "/images/cap2.png"
 				},
 				{
 					"id": 5,
