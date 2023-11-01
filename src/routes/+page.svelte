@@ -1,23 +1,23 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { all , u } from '$lib/stores/userStore'; // Import the store
-    import { onMount, onDestroy } from 'svelte';
-    import { showContent } from '$lib/stores/layoutStore';
+	import { all, u } from '$lib/stores/userStore'; // Import the store
+	import { onMount, onDestroy } from 'svelte';
+	import { showContent } from '$lib/stores/layoutStore';
 	let usersName = '';
 	let passWord = '';
 
-    onMount(() => {
-    showContent.set(false);
-  });
+	onMount(() => {
+		showContent.set(false);
+	});
 
-  onDestroy(() => {
-    showContent.set(true);
-  });
-    
-/* jee*/
+	onDestroy(() => {
+		showContent.set(true);
+	});
+
+	/* jee*/
 	async function logIn() {
 		// Fetch user data
-		fetch('http://localhost:5174/backend.json')
+		fetch('http://localhost:5173/backend.json')
 			.then((response) => response.json())
 			.then((data) => {
 				const user = data.users.find((u) => u.username === usersName);
@@ -56,16 +56,16 @@
 
 <main class="min-h-screen flex flex-col justify-center items-center p-4">
 	<div class="mb-4">
-		<img src="/icons/logogf.png" alt="logo" class="max-w-full h-auto"/>
+		<img src="/icons/logogf.png" alt="logo" class="max-w-full h-auto" />
 	</div>
 
 	<div class="w-full max-w-md px-8 py-6 mx-4 mt-4 text-left bg-white">
 		<p class="mb-6 text-center text-xl">Login to your account</p>
 		<div class="mb-4">
 			<div class="mb-6">
-				<label for="uname" class="sr-only"/>
+				<label for="uname" class="sr-only" />
 				<input
-                    class="w-full p-2 border-b-2 text-center focus:outline-none"
+					class="w-full p-2 border-b-2 text-center focus:outline-none"
 					type="text"
 					bind:value={usersName}
 					placeholder="Email"
@@ -76,7 +76,7 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="psw" class="sr-only"/>
+				<label for="psw" class="sr-only" />
 				<input
 					type="password"
 					class="w-full p-2 border-b-2 text-center focus:outline-none"
@@ -95,8 +95,11 @@
 				<p class="inline">Don't have an account?</p>
 				<p class="inline ml-1 text-purple-500 cursor-pointer">Sign up</p>
 			</div>
-			<button type="button" class="w-full px-4 py-2 mt-4 text-sm bg-white border rounded-full focus:outline-none" on:click={logIn} on:keypress={logIn}
-				><b>Login</b></button
+			<button
+				type="button"
+				class="w-full px-4 py-2 mt-4 text-sm bg-white border rounded-full focus:outline-none"
+				on:click={logIn}
+				on:keypress={logIn}><b>Login</b></button
 			>
 		</div>
 	</div>
