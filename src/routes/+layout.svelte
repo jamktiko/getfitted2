@@ -6,8 +6,8 @@
 
 {#if $showContent}
 	<div>
-		<header class="flex justify-center items-center py-4 px-4 sm:px-6" >
-			<img src="/images/Logo.png" alt="logo" class="w-auto h-auto sm:h-16"/>
+		<header class="flex justify-center items-center py-4 px-4 sm:px-6 md:mb-8">
+			<img src="/images/GET FITTED.jpeg" alt="logo" class="w-auto h-10 sm:h-16" />
 		</header>
 	</div>
 	<Navbar />
