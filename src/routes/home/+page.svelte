@@ -1,46 +1,53 @@
 <script>
-    import { goto } from '$app/navigation';
-	import { all , u } from '$lib/stores/userStore';
-    import InspectFit from '$lib/components/InspectFit.svelte';
+	import { goto } from '$app/navigation';
+	import { all, u } from '$lib/stores/userStore';
+	import InspectFit from '$lib/components/InspectFit.svelte';
 	$: if ($u.isLoggedIn) {
 		console.log('User is logged in:', $u.userName);
 		console.log('Users clothes:', $u.userClothes);
 	}
-    $: if ($u.isLoggedIn) {
+	$: if ($u.isLoggedIn) {
 		console.log('All clothes:', $all.allFits);
 	}
-    let valittuKuva = null;
-    
-    function handleFittiClick(fit) {
-      valittuKuva = fit;
-  
-    }
-    function handleSuljeFitti() {
-      valittuKuva = null;
-    }
-  </script>
-  
-  <main class="p-2 pb-16 m-4">
-    {#if valittuKuva}
-        <InspectFit {valittuKuva} on:close={handleSuljeFitti} />
-    {:else}
-    <div class="flex">
-      <button class="flex-1 p-4 m-4 font-mono text-sm text-purple-500 border-b border-purple-500">All</button>
-      <button class="flex-1 p-4 m-4 font-mono text-sm text-black" on:click={() => goto('/home/feedme')}>Me</button>
-    </div>
-    <div class="grid grid-cols-2 gap-4 mt-4">
-      <!-- each lohko käy läpi kaikkien käyttäjien fitit ja näyttää niiden kuvat -->
-      {#each $all.allFits as fit}
-        <div class="fitti" on:click={() => handleFittiClick(fit)}>
-          <img src={fit.imageUrl} alt="Fittikuva" class="w-full h-auto"/>
-        </div>
-      {/each}
-    </div>
-    {/if}
-  </main>
-  
-  
-  <!-- <style>
+
+	let valittuKuva = null;
+
+	function handleFittiClick(fit) {
+		valittuKuva = fit;
+	}
+	function handleSuljeFitti() {
+		valittuKuva = null;
+	}
+</script>
+
+<main class="pb-16">
+	<div class="mx-4">
+		{#if valittuKuva}
+			<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
+		{:else}
+			<div class="flex">
+				<button
+					class="flex-1 p-4 m-4 font-source text-base sm:text-lg text-purple-500 border-b border-purple-500"
+					>All</button
+				>
+				<button
+					class="flex-1 p-4 m-4 font-source text-base sm:text-lg text-black"
+					on:click={() => goto('/home/feedme')}>Me</button
+				>
+			</div>
+			<div class="grid grid-cols-2 gap-4 mt-4">
+				<!-- each lohko käy läpi kaikkien käyttäjien fitit ja näyttää niiden kuvat -->
+				{#each $all.allFits as fit}
+					<div class="fitti" on:click={() => handleFittiClick(fit)}>
+						<img src={fit.imageUrl} alt="Fittikuva" class="w-full h-auto" />
+					</div>
+				{/each}
+			</div>
+		{/if}
+	</div>
+</main>
+
+<!-- <style>
     main {
       padding: 8px;
     }
@@ -112,4 +119,3 @@
       color: #000000;
     }
   </style> -->
-  

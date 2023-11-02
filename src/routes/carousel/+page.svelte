@@ -1,5 +1,5 @@
 <script>
-    import { goto } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { u } from '$lib/stores/userStore';
 	$: console.log($u.userClothes);
 
@@ -67,10 +67,14 @@
 	}
 </script>
 
-<div class="vaatenapi">
-	<button class="napit" on:click={() => goto('/carousel/carousel2')}>Dresses & Overalls</button>
-	<button class="napit" on:click={() => carousels.forEach((_, index) => mixAndMatch(index))}
-		>Mix & Match</button
+<div class="flex justify-evenly mt-2">
+	<button
+		class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+		on:click={() => goto('/carousel/carousel2')}>Dresses & Overalls</button
+	>
+	<button
+		class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+		on:click={() => carousels.forEach((_, index) => mixAndMatch(index))}>Mix & Match</button
 	>
 </div>
 <div class="carousel-container">
@@ -98,9 +102,11 @@
 		</div>
 	{/each}
 </div>
-<div class="alanapit">
+<div class="flex flex-col mt-12">
 	<button>
-		<p class="choose">CHOOSE EXTRAS</p>
+		<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
+			CHOOSE EXTRAS
+		</p>
 		<p class="nuoli"><i class="arrow" /></p>
 	</button>
 </div>
@@ -157,7 +163,7 @@
 	.next-image {
 		transform: translateX(100%);
 	}
-	.napit {
+	/* 	.napit {
 		background-color: transparent;
 		border: 1px solid rgba(64, 64, 64, 1);
 		color: rgb(124, 120, 120);
@@ -170,13 +176,13 @@
 		padding: 0.6em 1.5em;
 		margin-bottom: 1.5em;
 		font-family: 'Source Code Pro', monospace;
-	}
-	.vaatenapi {
+	} */
+	/* .vaatenapi {
 		display: flex;
 		justify-content: space-evenly;
 		margin-top: 0.5em;
-	}
-	.choose {
+	} */
+	/* 	.choose {
 		font-family: 'Heebo', sans-serif;
 		text-decoration: none;
 		background-color: transparent;
@@ -188,7 +194,7 @@
 		margin: 0;
 		cursor: pointer;
 		font-size: 0.9em;
-	}
+	} */
 	.arrow {
 		border: solid #d499ff;
 		border-radius: 15%;
@@ -205,14 +211,14 @@
 		justify-content: center;
 		cursor: pointer;
 	}
-	.alanapit {
+	/* .alanapit {
 		display: flex;
 		flex-direction: column;
 		margin-top: 0.5em;
-	}
-	button {
+	} */
+	/* button {
 		background-color: transparent;
 		text-decoration: none;
 		border: none;
-	}
+	} */
 </style>

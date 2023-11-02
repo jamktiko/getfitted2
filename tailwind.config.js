@@ -7,8 +7,19 @@ export default {
 			source: ['Source Code Pro', 'monospace'],
 			logofont: ['Archivo Black', 'sans-serif']
 		},
-
-		extend: {}
+		screens: {
+			xs: '400px',
+			sm: '640px'
+		},
+		extend: {
+			colors: {
+				grey: '#404040',
+				pink1: '#d499ff',
+				pink2: '#c97eff',
+				black: '#000000',
+				pink3: '#e3befd'
+			}
+		}
 	},
 	plugins: []
 };
