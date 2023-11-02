@@ -24,11 +24,24 @@
 
 	console.log(valittuKuva);
 
-	let isLiked = false;
+	$: isLiked = $u.myLikes && valittuKuva ? $u.myLikes.includes(valittuKuva.imageUrl) : false;
 
-	function toggleLike() {
-		isLiked = !isLiked;
-	}
+function toggleLike() {
+  if (valittuKuva && valittuKuva.imageUrl) {
+    u.update(currentUser => {
+      let updatedLikes = currentUser.myLikes || [];
+      if (isLiked) {
+        updatedLikes = updatedLikes.filter(imageUrl => imageUrl !== valittuKuva.imageUrl);
+      } else {
+        updatedLikes = [...updatedLikes, valittuKuva.imageUrl];
+      }
+      console.log('Updated Likes:', updatedLikes);
+      return { ...currentUser, myLikes: updatedLikes };
+    });
+  } else {
+    console.error('valittuKuva or valittuKuva.imageUrl is undefined');
+  }
+}
 </script>
 
 <head>

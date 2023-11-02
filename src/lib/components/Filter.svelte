@@ -1,5 +1,68 @@
 <script>
-    /* import { u } from '$lib/userStore'; */
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
+  export let valittuFiltteri = [];
+
+  const kategoriat = ['Tops', 'Overalls', 'Bottoms', 'Shoes', 'Hats', 'Accessories'];
+
+  function toggleFilter(kategoria) {
+    const index = valittuFiltteri.indexOf(kategoria);
+    if (index === -1) {
+      valittuFiltteri = [...valittuFiltteri, kategoria];
+    } else {
+      valittuFiltteri = valittuFiltteri.filter((item) => item !== kategoria);
+    }
+    dispatch('filtteriVaihettu', valittuFiltteri);
+  }
+
+  function lisaaFiltteri() {
+    dispatch('lisaaFiltteri', valittuFiltteri);
+  }
+
+  function tyhjennaFiltteri() {
+    valittuFiltteri = [];
+    dispatch('lisaaFiltteri', valittuFiltteri);
+  }
+</script>
+
+<div class="fixed inset-0 bg-white bg-opacity-30 flex items-center justify-center">
+  <div class="bg-gray-600 p-5 rounded-lg text-white font-mono text-sm">
+    <div class="space-y-4">
+      {#each kategoriat as kategoria}
+        <label class="flex items-center">
+          <input
+            type="checkbox"
+            class="opacity-0 absolute h-6 w-6 z-20 cursor-pointer"
+            checked={valittuFiltteri.includes(kategoria)}
+            on:change={() => toggleFilter(kategoria)}
+          />
+          <div class="flex items-center justify-center h-6 w-6 border border-purple-300 bg-transparent rounded-md mr-4">
+            <svg class="{valittuFiltteri.includes(kategoria) ? 'block' : 'hidden'} w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 5.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          {kategoria}
+        </label>
+      {/each}
+    </div>
+    <div class="flex justify-evenly mt-5">
+      <button class="text-white font-bold" on:click={lisaaFiltteri}>APPLY</button>
+      <button class="text-white font-bold" on:click={tyhjennaFiltteri}>CLEAR</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
   
@@ -40,6 +103,15 @@
         />
         <span class="checkmark" />
         Tops
+      </label>
+      <label class="checkbox-container">
+        <input
+          type="checkbox"
+          checked={isChecked('Overalls')}
+          on:change={() => filtteriPaalla('Overalls')}
+        />
+        <span class="checkmark" />
+        Overalls
       </label>
       <label class="checkbox-container">
         <input
@@ -175,4 +247,4 @@
       font-weight: bold;
     }
   </style>
-  
+   -->

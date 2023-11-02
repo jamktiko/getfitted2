@@ -9,10 +9,11 @@
 	$: if ($u.isLoggedIn) {
 		console.log('All clothes:', $all.allFits);
 	}
+
 	let valittuKuva = null;
 
-	function handleFittiClick() {
-		valittuKuva = $all.allFits;
+	function handleFittiClick(fit) {
+		valittuKuva = fit;
 	}
 	function handleSuljeFitti() {
 		valittuKuva = null;

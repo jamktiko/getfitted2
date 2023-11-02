@@ -5,7 +5,8 @@ export const u = writable({
 	userName: '',
 	fullName: '',
 	userClothes: [],
-	userFits: []
+	userFits: [],
+	myLikes: []
 });
 export const all = writable({
 	allFits: []
