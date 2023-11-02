@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .heebo {
+        font-family: theme('fontFamily.heebo');
+    }
+    .source {
+        font-family: theme('fontFamily.source');
+    }
+    .logofont {
+        font-family: theme('fontFamily.logofont');
+    }
+}

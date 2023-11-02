@@ -11,8 +11,8 @@
 	}
     let valittuKuva = null;
     
-    function handleFittiClick() {
-      valittuKuva = $all.allFits;
+    function handleFittiClick(fit) {
+      valittuKuva = fit;
   
     }
     function handleSuljeFitti() {
