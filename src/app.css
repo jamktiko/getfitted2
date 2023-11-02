@@ -12,7 +12,7 @@
 	.logofont {
 		font-family: theme('fontFamily.logofont');
 	}
-	.buttonround {
+	/* .buttonround {
 		background-color: transparent;
 		border: 1px solid rgba(64, 64, 64, 1);
 		color: rgb(124, 120, 120);
@@ -24,8 +24,8 @@
 		cursor: pointer;
 		border-radius: 30px;
 		padding: 0.6em 2.4em;
-	}
-	.button2 {
+	} */
+	/* .button2 {
 		background-color: transparent;
 		border: none;
 		color: rgba(90, 90, 90, 1);
@@ -33,9 +33,9 @@
 		padding-top: 0.5em;
 		font-weight: bold;
 		font-size: 1.1em;
-	}
-	.plus {
+	} */
+	/* .plus {
 		color: theme('colors.pink2');
 		font-weight: bold;
-	}
+	} */
 }

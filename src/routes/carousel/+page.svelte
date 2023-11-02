@@ -102,7 +102,7 @@
 		</div>
 	{/each}
 </div>
-<div class="flex flex-col mt-2">
+<div class="flex flex-col mt-12">
 	<button>
 		<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
 			CHOOSE EXTRAS

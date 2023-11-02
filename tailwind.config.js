@@ -7,6 +7,10 @@ export default {
 			source: ['Source Code Pro', 'monospace'],
 			logofont: ['Archivo Black', 'sans-serif']
 		},
+		screens: {
+			xs: '400px',
+			sm: '640px'
+		},
 		extend: {
 			colors: {
 				grey: '#404040',

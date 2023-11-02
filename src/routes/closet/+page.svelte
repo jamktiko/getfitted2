@@ -54,7 +54,7 @@
 <main class="p-2 pb-16">
 	<div class="flex flex-col items-center">
 		<button
-			class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+			class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full sm:text-base"
 			on:click={() => (naytaFiltteri = true)}>Filter</button
 		>
 	</div>
@@ -83,7 +83,7 @@
 			</div>
 		{:else}
 			<button class="filtteri" on:click={() => (naytaFiltteri = true)}>Filter</button>
-			<div class="clothing-grid">
+			<div class="grid grid-cols-2 gap-8 mt-4">
 				{#each filteredVaatteet as userClothing (userClothing.id)}
 					<div on:click={() => handleVaateClick(userClothing)} class="p-2">
 						<UserClothing {userClothing} />
@@ -95,20 +95,20 @@
 </main>
 
 <style>
-	.clothing-grid {
-		/* display: grid;––--__
+	/* .clothing-grid {
+		 display: grid;––--__
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px; /* väli vaatteiden välillä */
+        gap: 20px; /* väli vaatteiden välillä 
 		display: grid;
 		justify-content: center;
 		grid-template-columns: repeat(2, 1fr);
 		align-items: center;
 		align-content: center;
-		/* gap: 1.6875rem; */
+		 gap: 1.6875rem; 
 		align-self: stretch;
 		flex-wrap: wrap;
 		margin-top: 1em;
-	}
+	} */
 	/* .filtteri {
 		background-color: transparent;
 		border: 1px solid rgba(64, 64, 64, 1);

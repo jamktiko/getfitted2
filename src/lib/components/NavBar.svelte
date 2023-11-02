@@ -22,7 +22,11 @@
 			class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600"
 			on:click={() => goto('/carousel')}>accessibility</span
 		>
-		<span class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600"
-        on:click={() => goto('/profile')}>person</span>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
+		<span
+			class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600"
+			on:click={() => goto('/profile')}>person</span
+		>
 	</div>
 </section>
