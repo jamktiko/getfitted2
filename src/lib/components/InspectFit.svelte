@@ -24,7 +24,7 @@
 
 	console.log(valittuKuva);
 
-	$: isLiked = $u.myLikes && valittuKuva ? $u.myLikes.includes(valittuKuva.imageUrl) : false;
+	$: isLiked = $u.myLikes && valittuKuva ? $u.myLikes.includes(valittuKuva.imageUrl) : null;
 
 function toggleLike() {
   if (valittuKuva && valittuKuva.imageUrl) {

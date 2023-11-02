@@ -26,20 +26,23 @@
 		<p>@{$u.userName}</p>
 	</div>
 
-	<div class="favourites overflow-y-hidden w-400 mt-8">
+	<div class="overflow-y-hidden w-400 mt-8">
 		<p class="header flex justify-start text-black text-18 font-source font-semibold pl-6">
 			Favourites
 		</p>
-		<div class="px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
-			<img src="/images/fitpic8.jpeg" alt="asu" class="h-40 inline-block p-2" />
-			<img src="/images/fitpic4.jpg" alt="asu" class=" h-40 inline-block p-2" />
-			<img src="/images/fitpic3.jpg" alt="asu" class=" h-40 inline-block p-2" />
-			<img src="/images/fitpic5.jpg" alt="asu" class=" h-40 inline-block p-2" />
-			<img src="/images/fitpic2.jpg" alt="asu" class=" h-40 inline-block p-2" />
-			<img src="/images/fitpic2.jpg" alt="asu" class=" h-40 inline-block p-2" />
-		</div>
+		{#if $u.myLikes.length === 0}
+			<div class="mt-4">
+			<p>You have no favourites yet...<p/>
+			</div>
+		{:else}
+			<div class="px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
+				{#each $u.myLikes as liked}
+					<img src={liked} alt="Liked images" class="h-40 inline-block p-2" />
+				{/each}
+			</div>
+		{/if}
 	</div>
-	<div class="favourites overflow-y-hidden w-400 mt-4">
+	<div class="overflow-y-hidden w-400 mt-4">
 		<p class="header flex justify-start text-black text-18 font-source font-semibold pl-6">
 			My outfits
 		</p>
