@@ -23,7 +23,7 @@
 	}
 
 	let overallCarousel = {
-		images: $u.userClothes.filter((v) => v.category === 'Overall').map((v) => v.imageUrl),
+		images: $u.userClothes.filter((v) => v.category === 'Overalls').map((v) => v.imageUrl),
 		currentIndex: 0,
 		startX: 0
 	};

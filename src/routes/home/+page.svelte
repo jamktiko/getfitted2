@@ -1,15 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { all, u } from '$lib/stores/userStore';
+	import { all } from '$lib/stores/userStore';
 	import InspectFit from '$lib/components/InspectFit.svelte';
-	$: if ($u.isLoggedIn) {
-		console.log('User is logged in:', $u.userName);
-		console.log('Users clothes:', $u.userClothes);
-	}
-	$: if ($u.isLoggedIn) {
-		console.log('All clothes:', $all.allFits);
-	}
-
 	let valittuKuva = null;
 
 	function handleFittiClick(fit) {
