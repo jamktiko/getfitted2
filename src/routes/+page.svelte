@@ -34,7 +34,8 @@
 						userName: usersName,
 						fullName: user.fullname,
 						userClothes: user.clothes,
-						userFits: user.fits
+						userFits: user.fits,
+                        myLikes: []
 					});
 					// Navigate to feedall page
 					goto('/home');

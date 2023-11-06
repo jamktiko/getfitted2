@@ -9,6 +9,7 @@
 	$: if ($u.isLoggedIn) {
 		console.log('All clothes:', $all.allFits);
 	}
+
 	let valittuKuva = null;
 
 	function handleFittiClick(fit) {

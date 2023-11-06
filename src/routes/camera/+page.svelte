@@ -68,9 +68,9 @@
 			<button
 				on:click={otaKuva}
 				class="kamera-nappi absolute bottom-14 bg-white text-4xl rounded-full h-14 w-14 flex items-center justify-center"
-				>photo_camera</button
+				></button
 			>
-			<button class="lightning-button absolute bottom-18 left-12 text-3xl">
+			<button class="flex fbottom-18 left-12 text-3xl">
 				<span class="material-icons">bolt</span>
 			</button>
 			<canvas
