@@ -55,11 +55,13 @@
 <main class="p-2 pb-16 m-4">
 	{#if $u.userClothes.length === 0}
 		<div>
-			<div class="flex flex-col justify-center items-center font-mono space-y-4 m-0 p-0 h-96">
-				<p>Oops... You have no clothes in your wardrobe yet</p>
+			<div
+				class="flex flex-col justify-center items-center text-xs sm:text-base text-center font-source space-y-4 m-0 p-0 h-96"
+			>
+				<p>Oops... You have no clothes in your wardrobe</p>
 				<button
-					class="text-gray-500 bg-white border border-black rounded-full py-2 px-8 font-bold text-lg flex items-center"
-					on:click={() => goto('/camera')}>Add <span class="plus">+</span></button
+					class="text-gray-500 bg-white border border-black rounded-full py-2 px-6 font-bold font-heebo text-sm text-center"
+					on:click={() => goto('/camera')}>Add <span class="text-pink2"> +</span></button
 				>
 			</div>
 		</div>
@@ -76,7 +78,7 @@
 		>
 			<VaateModaali {valittuItemi} on:close={handleSuljeVaate} />
 		</div>
-        {:else}
+	{:else}
 		{#if naytaFiltteri}
 			<FiltteriModal
 				bind:valittuFiltteri
@@ -88,9 +90,9 @@
 		{/if}
 		<div class="flex flex-col items-center">
 			<button
-            class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full sm:text-base"
-            on:click={() => (naytaFiltteri = true)}>Filter</button
-        >
+				class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full sm:text-base"
+				on:click={() => (naytaFiltteri = true)}>Filter</button
+			>
 		</div>
 		<div class="grid grid-cols-2 gap-8 mt-4">
 			{#each filteredVaatteet as userClothing (userClothing.id)}
@@ -101,4 +103,3 @@
 		</div>
 	{/if}
 </main>
-
