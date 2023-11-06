@@ -1,5 +1,6 @@
 <script>
 	import { u } from '$lib/stores/userStore';
+    import UserFit from '$lib/components/FitCard.svelte';
 </script>
 
 <main>
@@ -31,8 +32,9 @@
 			Favourites
 		</p>
 		{#if $u.myLikes.length === 0}
-			<div class="mt-4">
-			<p>You have no favourites yet...<p/>
+			<div class="m-6">
+				<p class="flex justify-center">You have no favourites yet...</p>
+				<p />
 			</div>
 		{:else}
 			<div class="px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
@@ -46,9 +48,10 @@
 		<p class="header flex justify-start text-black text-18 font-source font-semibold pl-6">
 			My outfits
 		</p>
-		<div class="pics px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
-			<img src="/images/fitpic2.jpg" alt="asu" class="h-40 inline-block p-2" />
-			<img src="/images/fitpic3.jpg" alt="asu" class="h-40 inline-block p-2" />
+		<div class="px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
+			{#each $u.userFits as userFit (userFit.id)}
+				<img src={userFit.imageUrl} alt="My outfits" class="h-40 inline-block p-2" />
+			{/each}
 		</div>
 	</div>
 </main>

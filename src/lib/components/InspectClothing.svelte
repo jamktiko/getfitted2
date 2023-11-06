@@ -26,7 +26,6 @@
 		</div>
 		<div class="omatasut">
 			<button class="button2">Add outfit&nbsp; <span class="plus"> +</span></button>
-			<img src="/images/image 1.png" alt="asu" class="asu" />
 		</div>
 	{/if}
 </main>
@@ -35,11 +34,6 @@
 	@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 	main {
 		padding: 8px;
-	}
-	.asu {
-		display: flex;
-		justify-content: flex-start;
-		max-width: 30%;
 	}
 	/* .add {
 		display: flex;
