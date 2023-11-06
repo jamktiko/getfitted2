@@ -54,7 +54,7 @@
 			<h3 class="text-gray-600 text-xl font-bold font-heebo pl-3">@{$u.userName}</h3>
 
 			<span
-				class="text-purple-300 cursor-pointer text-4xl pr-3 flex justify-center"
+				class="text-purple-300 cursor-pointer text-3xl pr-3 flex justify-center"
 				on:click={toggleLike}
 				class:liked={isLiked}
 			>

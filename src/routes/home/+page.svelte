@@ -11,8 +11,8 @@
 	}
 	let valittuKuva = null;
 
-	function handleFittiClick() {
-		valittuKuva = $all.allFits;
+	function handleFittiClick(fit) {
+		valittuKuva = fit;
 	}
 	function handleSuljeFitti() {
 		valittuKuva = null;
@@ -20,10 +20,10 @@
 </script>
 
 <main class="pb-16">
-	<div class="mx-4">
-		{#if valittuKuva}
-			<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
-		{:else}
+	{#if valittuKuva}
+		<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
+	{:else}
+		<div class="mx-4">
 			<div class="flex">
 				<button
 					class="flex-1 p-4 m-4 font-source text-base sm:text-lg text-purple-500 border-b border-purple-500"
@@ -42,8 +42,8 @@
 					</div>
 				{/each}
 			</div>
-		{/if}
-	</div>
+		</div>
+	{/if}
 </main>
 
 <!-- <style>
