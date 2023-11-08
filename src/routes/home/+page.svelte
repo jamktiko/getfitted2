@@ -13,11 +13,13 @@
 	}
 </script>
 
-<main class="pb-16">
-		{#if valittuKuva}
-			<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
-		{:else}
-        <div class="mx-4">
+
+<main class="pb-28">
+	{#if valittuKuva}
+		<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
+	{:else}
+		<div class="mx-4">
+
 			<div class="flex">
 				<button
 					class="flex-1 p-4 m-4 font-source text-base sm:text-lg text-purple-500 border-b border-purple-500"
@@ -36,8 +38,10 @@
 					</div>
 				{/each}
 			</div>
-        </div>
-		{/if}
+
+		</div>
+	{/if}
+
 </main>
 
 <!-- <style>

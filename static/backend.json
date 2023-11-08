@@ -134,9 +134,11 @@
 				{
 					"id": 9,
 					"color": "",
+
 					"category": "Bottoms",
 					"imageUrl": "/images/pants2.png",
           "desc": "Placeholder text"
+
 				},
 				{
 					"id": 10,
@@ -148,9 +150,11 @@
 				{
 					"id": 11,
 					"color": "",
+
 					"category": "Tops",
 					"imageUrl": "/images/shirt1.png",
           "desc": "Placeholder text"
+
 				},
 				{
 					"id": 12,

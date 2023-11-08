@@ -24,11 +24,31 @@
 
 	let overallCarousel = {
 		images: $u.userClothes.filter((v) => v.category === 'Overalls').map((v) => v.imageUrl),
+
+		currentIndex: 0,
+		startX: 0
+	};
+	let extrasCarousel1 = {
+		images: $u.userClothes.filter((v) => v.category === 'Shoes').map((v) => v.imageUrl),
+		currentIndex: 0,
+		startX: 0
+	};
+
+	let extrasCarousel2 = {
+		images: $u.userClothes.filter((v) => v.category === 'Hats').map((v) => v.imageUrl),
+		currentIndex: 0,
+		startX: 0
+	};
+
+	let extrasCarousel3 = {
+		images: $u.userClothes.filter((v) => v.category === 'Accessories').map((v) => v.imageUrl),
+
 		currentIndex: 0,
 		startX: 0
 	};
 
 	let carousels = [overallCarousel];
+	let extraCarousels = [extrasCarousel1, extrasCarousel2, extrasCarousel3];
 
 	function handleSwipeStart(event, carouselIndex) {
 		carousels[carouselIndex].startX = event.touches[0].clientX;
@@ -45,6 +65,22 @@
 			previous(carouselIndex);
 		}
 	}
+	// Event handling functions for the extra carousels
+	function handleSwipeStartExtra(event, carouselIndex) {
+		extraCarousels[carouselIndex].startX = event.touches[0].clientX;
+	}
+
+	function handleSwipeEndExtra(event, carouselIndex) {
+		const endX = event.changedTouches[0].clientX;
+		const startX = extraCarousels[carouselIndex].startX;
+		const threshold = 50;
+
+		if (startX - endX > threshold) {
+			nextExtra(carouselIndex);
+		} else if (endX - startX > threshold) {
+			previousExtra(carouselIndex);
+		}
+	}
 
 	function next(carouselIndex) {
 		carousels[carouselIndex].currentIndex =
@@ -56,50 +92,94 @@
 			(carousels[carouselIndex].currentIndex - 1 + carousels[carouselIndex].images.length) %
 			carousels[carouselIndex].images.length;
 	}
+
+	function nextExtra(carouselIndex) {
+		extraCarousels[carouselIndex].currentIndex =
+			(extraCarousels[carouselIndex].currentIndex + 1) %
+			extraCarousels[carouselIndex].images.length;
+	}
+
+	function previousExtra(carouselIndex) {
+		extraCarousels[carouselIndex].currentIndex =
+			(extraCarousels[carouselIndex].currentIndex -
+				1 +
+				extraCarousels[carouselIndex].images.length) %
+			extraCarousels[carouselIndex].images.length;
+	}
 </script>
 
-<div class="flex justify-evenly mt-2">
-	<button
-		class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
-		on:click={() => goto('/carousel')}>Tops & Bottoms</button
-	>
-	<button
-		class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
-		on:click={() => carousels.forEach((_, index) => mixAndMatch(index))}>Mix & Match</button
-	>
-</div>
-<div class="carousel-container">
-	{#each carousels as carousel, carouselIndex (carousel)}
-		<div
-			class="carousel"
-			on:touchstart={(event) => handleSwipeStart(event, carouselIndex)}
-			on:touchend={(event) => handleSwipeEnd(event, carouselIndex)}
+<div class="pb-20">
+	<div class="flex justify-evenly mt-2">
+		<button
+			class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+			on:click={() => goto('/carousel')}>Tops & Bottoms</button
 		>
-			{#each carousel.images as image, i (image)}
-				{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
-					<img
-						src={image}
-						alt={`Image ${i + 1}`}
-						class={i === carousel.currentIndex
-							? 'current-image'
-							: i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
-							? 'prev-image'
-							: i === (carousel.currentIndex + 1) % carousel.images.length
-							? 'next-image'
-							: ''}
-					/>
-				{/if}
-			{/each}
-		</div>
-	{/each}
-</div>
-<div class="flex flex-col mt-28">
-	<button>
-		<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
-			CHOOSE EXTRAS
-		</p>
-		<p class="nuoli"><i class="arrow" /></p>
-	</button>
+		<button
+			class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+			on:click={() => carousels.forEach((_, index) => mixAndMatch(index))}>Mix & Match</button
+		>
+	</div>
+	<div class="carousel-container">
+		{#each carousels as carousel, carouselIndex (carousel)}
+			<div
+				class="carousel"
+				on:touchstart={(event) => handleSwipeStart(event, carouselIndex)}
+				on:touchend={(event) => handleSwipeEnd(event, carouselIndex)}
+			>
+				{#each carousel.images as image, i (image)}
+					{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
+						<img
+							src={image}
+							alt={`Image ${i + 1}`}
+							class={i === carousel.currentIndex
+								? 'current-image'
+								: i ===
+								  (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
+								? 'prev-image'
+								: i === (carousel.currentIndex + 1) % carousel.images.length
+								? 'next-image'
+								: ''}
+						/>
+					{/if}
+				{/each}
+			</div>
+		{/each}
+	</div>
+	<div class="flex flex-col mt-28">
+		<button>
+			<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
+				CHOOSE EXTRAS
+			</p>
+			<p class="nuoli"><i class="arrow" /></p>
+		</button>
+	</div>
+
+	<div class="carousel-container2">
+		{#each extraCarousels as carousel, carouselIndex (carousel)}
+			<div
+				class="carousel"
+				on:touchstart={(event) => handleSwipeStartExtra(event, carouselIndex)}
+				on:touchend={(event) => handleSwipeEndExtra(event, carouselIndex)}
+			>
+				{#each carousel.images as image, i (image)}
+					{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
+						<img
+							src={image}
+							alt={`Image ${i + 1}`}
+							class={i === carousel.currentIndex
+								? 'current-image2'
+								: i ===
+								  (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
+								? 'prev-image2'
+								: i === (carousel.currentIndex + 1) % carousel.images.length
+								? 'next-image2'
+								: ''}
+						/>
+					{/if}
+				{/each}
+			</div>
+		{/each}
+	</div>
 </div>
 
 <style>
@@ -126,7 +206,16 @@
 		margin-top: 3em;
 		margin-bottom: 3.5em;
 	}
-
+	.carousel-container2 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		height: 55vh;
+		overflow: hidden;
+		margin-top: 2em;
+		margin-bottom: 3em;
+	}
 	.carousel img {
 		max-height: 100%;
 		max-width: 100%;
@@ -154,6 +243,27 @@
 
 	.next-image {
 		transform: translateX(90%);
+	}
+	.current-image2 {
+		transform: scale(1);
+		z-index: 1;
+	}
+
+	.prev-image2,
+	.next-image2 {
+		padding: 5px;
+		block-size: 800%;
+		position: absolute;
+		display: none;
+		opacity: 0.5;
+	}
+
+	.prev-image2 {
+		transform: translateX(-130%);
+	}
+
+	.next-image2 {
+		transform: translateX(130%);
 	}
 	/* 	.napit {
 		background-color: transparent;
