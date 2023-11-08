@@ -31,7 +31,6 @@
 		</div>
 		<div class="omatasut">
 			<button class="button2">Add outfit&nbsp; <span class="plus"> +</span></button>
-			<img src="/images/image 1.png" alt="asu" class="asu" />
 		</div>
 	{/if}
 </main>
@@ -41,6 +40,7 @@
 	main {
 		padding: 8px;
 	}
+
 	.asu {
 		display: flex;
 		justify-content: flex-start;
@@ -49,6 +49,7 @@
 	.material-icons {
 		font-size: 3em;
 	}
+
 	/* .add {
 		display: flex;
 		justify-content: flex-start;

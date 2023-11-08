@@ -26,7 +26,9 @@
 	}
 </script>
 
+
 <main class=" pb-28">
+
 	{#if valittuKuva}
 		<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
 	{:else if empty()}

@@ -1,12 +1,14 @@
 <script>
+    import { goto } from '$app/navigation';
 	import { u } from '$lib/stores/userStore';
+    import UserFit from '$lib/components/FitCard.svelte';
 </script>
 
 <main>
 	<div
 		class="text-center pb-2 xs:absolute xs:top-4 xs:right-8 xs:z-10 xs:pl-8 sm:absolute sm:top-4 sm:right-8 sm:z-10 sm:pl-10 sm:pr-10 sm:pt-2"
 	>
-		<button class="">
+		<button on:click={() => goto('/profile/settings')} class="">
 			<img src="/images/settings.png" alt="settings" class="w-9" />
 		</button>
 	</div>
@@ -31,7 +33,11 @@
 			Favourites
 		</p>
 		{#if $u.myLikes.length === 0}
-			<div class=" h-40" />
+
+			<div class="px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
+				<div class="h-40 inline-block p-2"></div>
+			</div>
+
 		{:else}
 			<div class="px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
 				{#each $u.myLikes.reverse() as liked}
@@ -44,9 +50,13 @@
 		<p class="header flex justify-start text-black text-18 font-source font-semibold pl-6">
 			My outfits
 		</p>
-		<div class="pics px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
-			<img src="/images/fitpic2.jpg" alt="asu" class="h-40 inline-block p-2" />
-			<img src="/images/fitpic3.jpg" alt="asu" class="h-40 inline-block p-2" />
+		<div class="px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
+			{#each $u.userFits as userFit (userFit.id)}
+				<img src={userFit.imageUrl} alt="My outfits" class="h-40 inline-block p-2" />
+			{/each}
 		</div>
 	</div>
 </main>
+<!-- <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"/>
+  </svg> -->

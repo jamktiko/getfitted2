@@ -1,5 +1,13 @@
 <script>
 	import { goto } from '$app/navigation';
+	import CameraModal from '$lib/components/CameraModal.svelte';
+	export let showModal = false;
+
+	function handleCloseModal() {
+		showModal = false;
+	}
+
+
 </script>
 
 <section>
@@ -10,15 +18,23 @@
 		<span class="material-icons text-icon text-grey" on:click={() => goto('/closet')}
 			>checkroom</span
 		>
-		<span class="material-icons text-icon text-grey" on:click={() => goto('/camera')}
+		<span class="material-icons text-icon text-grey" on:click={() => (showModal = true)}
 			>photo_camera</span
 		>
+
 		<span class="material-icons text-icon text-grey" on:click={() => goto('/carousel')}
 			>accessibility</span
+
 		>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<span class="material-icons text-icon text-grey" on:click={() => goto('/profile')}>person</span>
+	</div>
+
+	<div>
+		{#if showModal}
+			<CameraModal on:closeModal={handleCloseModal} />
+		{/if}
 	</div>
 </section>
 

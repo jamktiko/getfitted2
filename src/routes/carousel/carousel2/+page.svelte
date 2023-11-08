@@ -24,6 +24,7 @@
 
 	let overallCarousel = {
 		images: $u.userClothes.filter((v) => v.category === 'Overalls').map((v) => v.imageUrl),
+
 		currentIndex: 0,
 		startX: 0
 	};
@@ -41,6 +42,7 @@
 
 	let extrasCarousel3 = {
 		images: $u.userClothes.filter((v) => v.category === 'Accessories').map((v) => v.imageUrl),
+
 		currentIndex: 0,
 		startX: 0
 	};

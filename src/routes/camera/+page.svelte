@@ -2,10 +2,12 @@
 	import { goto } from '$app/navigation';
 	import { onMount, onDestroy } from 'svelte';
 	import { showContent } from '$lib/stores/layoutStore';
+	import { capturedImageData } from '$lib/stores/imageStore';
 	let videoElementti;
 	let canvasElementti;
 	let striimi;
 	let kuvaData = null;
+	let selectedContent = '';
 
 	onMount(() => {
 		showContent.set(false);
@@ -43,50 +45,53 @@
 		const context = canvasElementti.getContext('2d');
 		context.drawImage(videoElementti, 0, 0, canvasElementti.width, canvasElementti.height);
 		kuvaData = canvasElementti.toDataURL('image/jpg');
+		capturedImageData.set(kuvaData);
 		striimi.getTracks().forEach((track) => track.stop());
 	}
 	function suljeKamera() {
 		striimi.getTracks().forEach((track) => track.stop());
 		goto('/home');
 	}
+
+	function selectContent(contentType) {
+		selectedContent = contentType;
+	}
+
+	async function navigate() {
+		if (selectedContent) {
+			await goto(`/camera/image?content=${selectedContent}`);
+		} else {
+			// Handle the case where no selection has been made before pressing "Next"
+			console.error('Please select content before proceeding.');
+		}
+	}
 </script>
 
-<div class="camera relative flex flex-col items-center justify-center h-screen bg-black text-white">
+<div class="camera flex flex-col items-center justify-center h-screen bg-black text-white">
 	{#if !kuvaData}
-		<div class="relative flex flex-col items-center justify-center w-full h-full">
-			<video
-				bind:this={videoElementti}
-				autoplay
-				muted
-				class="absolute w-full h-full object-cover"
-			/>
 
-			<button
+		<div class="flex flex-col items-center justify-center w-full h-full">
+			<video bind:this={videoElementti} autoplay muted class="w-full h-full object-cover" />
+				<button
 				on:click={suljeKamera}
 				class=" bg-transparent outline-none border-none absolute top-8 left-8 flex"
 			>
 				<span class="material-icons text-grey">chevron_left</span></button
 			>
-			<button
-				on:click={otaKuva}
-				class="kamera-nappi absolute bottom-14 bg-white bg-opacity-90 text-4xl rounded-full h-14 w-14 flex items-center justify-center"
-			/>
-			<button class="flex fbottom-18 left-12 text-3xl">
-				<span class="material-icons">bolt</span>
-			</button>
-			<canvas
-				bind:this={canvasElementti}
-				class="hidden flex items-center justify-center w-full h-full"
-			/>
+			<div class="absolute inset-x-0 bottom-14 flex justify-center">
+				<button
+					on:click={otaKuva}
+					class="bg-white text-4xl rounded-full bg-opacity-90 h-14 w-14 flex items-center justify-center"
+				/>
+			</div>
+			<!-- <button class="absolute bottom-18 left-12 text-3xl">
+		  <span class="material-icons">bolt</span>
+		</button> -->
+			<canvas bind:this={canvasElementti} class="hidden w-full h-full" />
+
 		</div>
 	{:else}
-		<div class="kuva-container flex flex-col items-center justify-between w-full h-screen p-24">
-			<img
-				class="kuva w-full h-5/6 object-cover mt-4 mb-4 flex-grow"
-				src={kuvaData}
-				alt="Captured snapshot"
-			/>
-
+		<div class="kuva-container flex flex-col items-center justify-between w-full h-screen bg-white">
 			<button
 				on:click={otaUusi}
 				class=" bg-transparent outline-none border-none absolute top-8 left-8 flex"
@@ -94,14 +99,37 @@
 				<span class="material-icons text-grey">chevron_left</span></button
 			>
 			<button
-				class="nabi absolute top-6 right-2 inline-block px-6 py-2 text-xs font-mono border rounded-full cursor-pointer"
+ 				 class="hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline {selectedContent === 'first' ? 'bg-gray-600' : 'bg-gray-200'}"
+  					on:click={() => selectContent('first')}
+				>
+  				Add to wardrobe
+			</button>
+			<button
+  				class="hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline {selectedContent === 'second' ? 'bg-gray-600' : 'bg-gray-200'}"
+  				on:click={() => selectContent('second')}
+				>
+  				Add to outfits
+			</button>
+			<img
+
+
+				class="w-full h-3/6 object-cover mt-4 mb-4 flex-grow"
+				src={kuvaData}
+				alt="Captured snapshot"
+			/>
+			<p class="info p-4 m-4 text-xs font-medium text-black">
+				If you're happy with the picture, click next
+			</p>
+			<button
+				on:click={navigate}
+				disabled={!selectedContent}
+				class="mt-4 mb-2 px-6 py-2 text-xs font-medium text-black border rounded-full cursor-pointer"
 				>Next</button
 			>
-			<p class="info text-xs font-source">If you're happy with the picture, click next</p>
+
 		</div>
 	{/if}
 </div>
-
 <!-- <style>
      .nuoli {
     border: none;
