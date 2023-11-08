@@ -1,5 +1,13 @@
 <script>
 	import { goto } from '$app/navigation';
+	import CameraModal from '$lib/components/CameraModal.svelte';
+	export let showModal = false;
+
+	function handleCloseModal() {
+		showModal = false;
+	}
+
+
 </script>
 
 <section>
@@ -16,7 +24,7 @@
 		>
 		<span
 			class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600"
-			on:click={() => goto('/camera')}>photo_camera</span
+			on:click={() => (showModal = true)}>photo_camera</span
 		>
 		<span
 			class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600"
@@ -28,5 +36,11 @@
 			class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600"
 			on:click={() => goto('/profile')}>person</span
 		>
+	</div>
+
+	<div>
+		{#if showModal}
+			<CameraModal on:closeModal={handleCloseModal} />
+		{/if}
 	</div>
 </section>

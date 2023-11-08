@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { all } from '$lib/stores/userStore';
 	import InspectFit from '$lib/components/InspectFit.svelte';
+
 	let valittuKuva = null;
 
 	function handleFittiClick(fit) {
@@ -13,10 +14,10 @@
 </script>
 
 <main class="pb-16">
-	<div class="mx-4">
 		{#if valittuKuva}
 			<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
 		{:else}
+        <div class="mx-4">
 			<div class="flex">
 				<button
 					class="flex-1 p-4 m-4 font-source text-base sm:text-lg text-purple-500 border-b border-purple-500"
@@ -35,8 +36,8 @@
 					</div>
 				{/each}
 			</div>
+        </div>
 		{/if}
-	</div>
 </main>
 
 <!-- <style>
