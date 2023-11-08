@@ -60,16 +60,17 @@
 				muted
 				class="absolute w-full h-full object-cover"
 			/>
-			<button on:click={suljeKamera} class="nuoli absolute top-8 left-8 flex">
-				<i
-                class="arrow transform rotate-135 border border-gray-400 rounded border-r-0 border-b-0 p-2"
-				/></button
+
+			<button
+				on:click={suljeKamera}
+				class=" bg-transparent outline-none border-none absolute top-8 left-8 flex"
+			>
+				<span class="material-icons text-grey">chevron_left</span></button
 			>
 			<button
 				on:click={otaKuva}
-				class="kamera-nappi absolute bottom-14 bg-white text-4xl rounded-full h-14 w-14 flex items-center justify-center"
-				></button
-			>
+				class="kamera-nappi absolute bottom-14 bg-white bg-opacity-90 text-4xl rounded-full h-14 w-14 flex items-center justify-center"
+			/>
 			<button class="flex fbottom-18 left-12 text-3xl">
 				<span class="material-icons">bolt</span>
 			</button>
@@ -81,20 +82,22 @@
 	{:else}
 		<div class="kuva-container flex flex-col items-center justify-between w-full h-screen p-24">
 			<img
-            class="kuva w-full h-5/6 object-cover mt-4 mb-4 flex-grow"
+				class="kuva w-full h-5/6 object-cover mt-4 mb-4 flex-grow"
 				src={kuvaData}
 				alt="Captured snapshot"
 			/>
-			<button on:click={otaUusi} class="nuoli">
-				<i
-                class="arrow transform rotate-135 border border-gray-400 rounded border-r-0 border-b-0 p-2"
-				/></button
+
+			<button
+				on:click={otaUusi}
+				class=" bg-transparent outline-none border-none absolute top-8 left-8 flex"
+			>
+				<span class="material-icons text-grey">chevron_left</span></button
 			>
 			<button
-            class="nabi absolute top-6 right-2 inline-block px-6 py-2 text-xs font-mono border rounded-full cursor-pointer"
+				class="nabi absolute top-6 right-2 inline-block px-6 py-2 text-xs font-mono border rounded-full cursor-pointer"
 				>Next</button
 			>
-			<p class="info text-xs font-mono">If you're happy with the picture, click next</p>
+			<p class="info text-xs font-source">If you're happy with the picture, click next</p>
 		</div>
 	{/if}
 </div>
@@ -246,3 +249,9 @@
 		padding-right: 1.5em;
 	}
 </style> -->
+
+<style>
+	.material-icons {
+		font-size: 3em;
+	}
+</style>

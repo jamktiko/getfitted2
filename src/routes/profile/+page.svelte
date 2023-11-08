@@ -4,7 +4,7 @@
 
 <main>
 	<div
-		class="text-center pb-4 xs:absolute xs:top-4 xs:right-8 xs:z-10 xs:pl-8 sm:absolute sm:top-4 sm:right-8 sm:z-10 sm:pl-10 sm:pr-10 sm:pt-2"
+		class="text-center pb-2 xs:absolute xs:top-4 xs:right-8 xs:z-10 xs:pl-8 sm:absolute sm:top-4 sm:right-8 sm:z-10 sm:pl-10 sm:pr-10 sm:pt-2"
 	>
 		<button class="">
 			<img src="/images/settings.png" alt="settings" class="w-9" />
@@ -15,7 +15,7 @@
 			<img src="/images/IMG_8468.jpeg" alt="profilepic" class=" w-full h-auto" />
 		</div>
 	</div>
-	<div class="fullname text-black font-source text-md font-bold text-center mt-4">
+	<div class="fullname text-black font-source text-md font-bold text-center mt-3">
 		<p>
 			{#each $u.fullName as name}
 				{name.firstname} {name.lastname}
@@ -31,12 +31,10 @@
 			Favourites
 		</p>
 		{#if $u.myLikes.length === 0}
-			<div class="mt-4">
-			<p>You have no favourites yet...<p/>
-			</div>
+			<div class=" h-40" />
 		{:else}
 			<div class="px-4 flex flex-no-wrap overflow-x-auto scrollbar-hidden">
-				{#each $u.myLikes as liked}
+				{#each $u.myLikes.reverse() as liked}
 					<img src={liked} alt="Liked images" class="h-40 inline-block p-2" />
 				{/each}
 			</div>

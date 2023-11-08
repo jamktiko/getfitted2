@@ -52,7 +52,7 @@
 	}
 </script>
 
-<main class="p-2 pb-16 m-4">
+<main class=" pb-20 m-4">
 	{#if $u.userClothes.length === 0}
 		<div>
 			<div

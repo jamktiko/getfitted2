@@ -26,22 +26,22 @@
 
 	$: isLiked = $u.myLikes && valittuKuva ? $u.myLikes.includes(valittuKuva.imageUrl) : null;
 
-function toggleLike() {
-  if (valittuKuva && valittuKuva.imageUrl) {
-    u.update(currentUser => {
-      let updatedLikes = currentUser.myLikes || [];
-      if (isLiked) {
-        updatedLikes = updatedLikes.filter(imageUrl => imageUrl !== valittuKuva.imageUrl);
-      } else {
-        updatedLikes = [...updatedLikes, valittuKuva.imageUrl];
-      }
-      console.log('Updated Likes:', updatedLikes);
-      return { ...currentUser, myLikes: updatedLikes };
-    });
-  } else {
-    console.error('valittuKuva or valittuKuva.imageUrl is undefined');
-  }
-}
+	function toggleLike() {
+		if (valittuKuva && valittuKuva.imageUrl) {
+			u.update((currentUser) => {
+				let updatedLikes = currentUser.myLikes || [];
+				if (isLiked) {
+					updatedLikes = updatedLikes.filter((imageUrl) => imageUrl !== valittuKuva.imageUrl);
+				} else {
+					updatedLikes = [...updatedLikes, valittuKuva.imageUrl];
+				}
+				console.log('Updated Likes:', updatedLikes);
+				return { ...currentUser, myLikes: updatedLikes };
+			});
+		} else {
+			console.error('valittuKuva or valittuKuva.imageUrl is undefined');
+		}
+	}
 </script>
 
 <head>
@@ -55,10 +55,10 @@ function toggleLike() {
 		<div class="absolute flex items-center justify-start z-50 p-2">
 			<button
 				on:click={handleSulku}
-				class="bg-transparent text-black p-3 flex items-center justify-center"
+				class="ml-2 mt-5 bg-transparent outline-none border-none flex justify-start"
 			>
-				<i class="border-2 border-black rounded-md p-1 transform rotate-135" />
-			</button>
+				<span class="material-icons text-grey">chevron_left</span></button
+			>
 		</div>
 		<div class="flex flex-col items-center relative w-full">
 			<img src={valittuKuva.imageUrl} alt="käyttäjän vaate" class="w-full max-h-full" />
@@ -93,14 +93,8 @@ function toggleLike() {
 </main>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
-
-	:global(.font-heebo) {
-		font-family: 'Heebo', sans-serif;
-	}
-
-	:global(.font-source-code-pro) {
-		font-family: 'Source Code Pro', monospace;
+	.material-icons {
+		font-size: 3em;
 	}
 
 	/* .getfittedlogo {
