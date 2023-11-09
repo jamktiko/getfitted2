@@ -3,6 +3,8 @@
 	import { all, u } from '$lib/stores/userStore'; // Import the store
 	import { onMount, onDestroy } from 'svelte';
 	import { showContent } from '$lib/stores/layoutStore';
+	import GoogleSignin from '$lib/components/GoogleSignin.svelte';
+	import UploadServer from '$lib/components/UploadServer.svelte';
 	let usersName = '';
 	let passWord = '';
 
@@ -35,7 +37,7 @@
 						fullName: user.fullname,
 						userClothes: user.clothes,
 						userFits: user.fits,
-                        myLikes: []
+						myLikes: []
 					});
 					// Navigate to feedall page
 					goto('/home');
@@ -54,6 +56,9 @@
 		}
 	}
 </script>
+
+<GoogleSignin />
+<UploadServer />
 
 <main class="min-h-screen flex flex-col justify-center items-center p-4">
 	<div class="mb-4">

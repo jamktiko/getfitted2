@@ -10,6 +10,14 @@
 	function handleSuljeFitti() {
 		valittuKuva = null;
 	}
+	import AddUserName from '$lib/components/AddUserName.svelte';
+	let showModal = false;
+	let username = '';
+
+	function setUsername(newUsername) {
+		username = newUsername;
+		// You can also add logic to handle the username here
+	}
 </script>
 
 <main class="pb-16">
@@ -37,6 +45,11 @@
 			</div>
 		{/if}
 	</div>
+	<button on:click={() => (showModal = true)}>Add Username</button>
+
+	<AddUserName {showModal} {setUsername} />
+
+	<p>Entered username: {username}</p>
 </main>
 
 <!-- <style>

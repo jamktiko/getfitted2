@@ -52,7 +52,7 @@
 				>
 			</div>
 			<div class="grid grid-cols-2 gap-4 mt-4">
-				{#each $u.userFits as userFit (userFit.id)}
+				{#each $u.userFits as userFit}
 					<div on:click={() => handleFittiClick(userFit)}>
 						<UserFit {userFit} />
 					</div>
