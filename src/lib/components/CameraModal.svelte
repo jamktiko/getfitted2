@@ -7,6 +7,7 @@
 		showModal = false;
 		dispatch('closeModal');
 	}
+
 	let fileInput;
 
 	function openFileInput() {
