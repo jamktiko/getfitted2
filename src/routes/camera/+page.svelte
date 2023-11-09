@@ -67,14 +67,13 @@
 	}
 </script>
 
-<div class="camera flex flex-col items-center justify-center h-screen bg-black text-white">
+<div class=" h-screen bg-black text-white">
 	{#if !kuvaData}
-
-		<div class="flex flex-col items-center justify-center w-full h-full">
+		<div class="flex justify-center w-full h-full">
 			<video bind:this={videoElementti} autoplay muted class="w-full h-full object-cover" />
-				<button
+			<button
 				on:click={suljeKamera}
-				class=" bg-transparent outline-none border-none absolute top-8 left-8 flex"
+				class=" bg-transparent outline-none border-none absolute top-7 left-3 flex"
 			>
 				<span class="material-icons text-grey">chevron_left</span></button
 			>
@@ -88,48 +87,56 @@
 		  <span class="material-icons">bolt</span>
 		</button> -->
 			<canvas bind:this={canvasElementti} class="hidden w-full h-full" />
-
 		</div>
 	{:else}
-		<div class="kuva-container flex flex-col items-center justify-between w-full h-screen bg-white">
-			<button
-				on:click={otaUusi}
-				class=" bg-transparent outline-none border-none absolute top-8 left-8 flex"
-			>
-				<span class="material-icons text-grey">chevron_left</span></button
-			>
-			<button
- 				 class="hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline {selectedContent === 'first' ? 'bg-gray-600' : 'bg-gray-200'}"
-  					on:click={() => selectContent('first')}
+		<div class="kuva-container flex flex-col items-center justify-between h-screen bg-white">
+			<div class="flex flex-row ml-6 mt-9">
+				<button
+					on:click={otaUusi}
+					class=" bg-transparent outline-none border-none absolute top-7 left-[0px] xs:left-3"
 				>
-  				Add to wardrobe
-			</button>
-			<button
-  				class="hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline {selectedContent === 'second' ? 'bg-gray-600' : 'bg-gray-200'}"
-  				on:click={() => selectContent('second')}
+					<span class="material-icons text-grey">chevron_left</span></button
 				>
-  				Add to outfits
-			</button>
+
+				<button
+					class=" font-source border rounded-full py-2 px-3 xs:px-4 mx-0.5 xs:mx-2.5 text-[12px] sm:text-[15px] text-center flex justify-center {selectedContent ===
+					'first'
+						? 'bg-grey text-white focus:outline-none focus:shadow-outline'
+						: 'bg-transparent text-grey border-gray-400'}"
+					on:click={() => selectContent('first')}
+				>
+					Add to wardrobe
+				</button>
+				<button
+					class=" font-source border rounded-full py-2 px-3 xs:px-4 mx-0.5 xs:mx-2.5 text-[12px] sm:text-[15px] text-center flex justify-center {selectedContent ===
+					'second'
+						? 'bg-grey text-white focus:outline-none focus:shadow-outline'
+						: 'bg-transparent text-grey border-gray-400'}"
+					on:click={() => selectContent('second')}
+				>
+					Add to outfits
+				</button>
+			</div>
 			<img
-
-
-				class="w-full h-3/6 object-cover mt-4 mb-4 flex-grow"
+				class="w-full h-3/6 object-cover mt-4 mb-2 flex flex-grow"
 				src={kuvaData}
 				alt="Captured snapshot"
 			/>
-			<p class="info p-4 m-4 text-xs font-medium text-black">
+			<p
+				class="info p-1 m-1 text-center text-[12px] sm:text-[14px] font-extrabold font-source text-grey"
+			>
 				If you're happy with the picture, click next
 			</p>
 			<button
 				on:click={navigate}
 				disabled={!selectedContent}
-				class="mt-4 mb-2 px-6 py-2 text-xs font-medium text-black border rounded-full cursor-pointer"
+				class="hover:bg-grey hover:text-white font-source border rounded-full py-2 px-4 text-[13px] sm:text-[15px]text-center bg-transparent text-grey border-gray-400 mb-4"
 				>Next</button
 			>
-
 		</div>
 	{/if}
 </div>
+
 <!-- <style>
      .nuoli {
     border: none;

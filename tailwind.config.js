@@ -8,7 +8,7 @@ export default {
 			logofont: ['Archivo Black', 'sans-serif']
 		},
 		screens: {
-			xs: '400px',
+			xs: '390px',
 			sm: '640px'
 		},
 

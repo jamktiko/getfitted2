@@ -5,21 +5,23 @@
 
 	let valittuKuva = null;
 
+	let containerElement;
+
 	function handleFittiClick(fit) {
 		valittuKuva = fit;
+		containerScrollPosition = containerElement.scrollTop;
 	}
 	function handleSuljeFitti() {
 		valittuKuva = null;
+		containerElement.scrollTo(0, containerScrollPosition);
 	}
 </script>
-
 
 <main class="pb-28">
 	{#if valittuKuva}
 		<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
 	{:else}
 		<div class="mx-4">
-
 			<div class="flex">
 				<button
 					class="flex-1 p-4 m-4 font-source text-base sm:text-lg text-purple-500 border-b border-purple-500"
@@ -33,15 +35,13 @@
 			<div class="grid grid-cols-2 gap-4 mt-4">
 				<!-- each lohko käy läpi kaikkien käyttäjien fitit ja näyttää niiden kuvat -->
 				{#each $all.allFits as fit}
-					<div class="fitti" on:click={() => handleFittiClick(fit)}>
+					<div bind:this={containerElement} class="fitti" on:click={() => handleFittiClick(fit)}>
 						<img src={fit.imageUrl} alt="Fittikuva" class="w-full h-auto" />
 					</div>
 				{/each}
 			</div>
-
 		</div>
 	{/if}
-
 </main>
 
 <!-- <style>
