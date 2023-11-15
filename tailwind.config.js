@@ -11,8 +11,12 @@ export default {
 			logofont: ['Archivo Black', 'sans-serif']
 		},
 		screens: {
-			xs: '400px',
+			xs: '390px',
 			sm: '640px'
+		},
+
+		fontSize: {
+			icon: '32px'
 		},
 		extend: {
 			colors: {
@@ -20,7 +24,8 @@ export default {
 				pink1: '#d499ff',
 				pink2: '#c97eff',
 				black: '#000000',
-				pink3: '#e3befd'
+				pink3: '#e3befd',
+				nav: '#F8F7F4E7'
 			}
 		}
 	},

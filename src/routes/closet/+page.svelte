@@ -55,14 +55,16 @@
 	}
 </script>
 
-<main class="p-2 pb-16 m-4">
+<main class=" pb-20 m-4">
 	{#if $u.userClothes.length === 0}
 		<div>
-			<div class="flex flex-col justify-center items-center font-mono space-y-4 m-0 p-0 h-96">
-				<p>Oops... You have no clothes in your wardrobe yet</p>
+			<div
+				class="flex flex-col justify-center items-center text-xs sm:text-base text-center font-source space-y-4 m-0 p-0 h-96"
+			>
+				<p>Oops... You have no clothes in your wardrobe</p>
 				<button
-					class="text-gray-500 bg-white border border-black rounded-full py-2 px-8 font-bold text-lg flex items-center"
-					on:click={() => goto('/camera')}>Add <span class="plus">+</span></button
+					class="text-gray-500 bg-white border border-black rounded-full py-2 px-6 font-bold font-heebo text-sm text-center"
+					on:click={() => goto('/camera')}>Add <span class="text-pink2"> +</span></button
 				>
 			</div>
 		</div>

@@ -11,7 +11,12 @@
 
 <main>
 	{#if valittuItemi}
-		<button on:click={handleClose} class="nuoli"> <i class="arrow" /></button>
+		<button
+			on:click={handleClose}
+			class=" bg-transparent outline-none border-none flex justify-start"
+		>
+			<span class="material-icons text-grey text-icon">chevron_left</span></button
+		>
 		<div class="modali">
 			<img src={valittuItemi.imageUrl} alt="käyttäjän vaate" class="iso-kuva" />
 		</div>
@@ -26,7 +31,6 @@
 		</div>
 		<div class="omatasut">
 			<button class="button2">Add outfit&nbsp; <span class="plus"> +</span></button>
-			<img src="/images/image 1.png" alt="asu" class="asu" />
 		</div>
 	{/if}
 </main>
@@ -36,11 +40,16 @@
 	main {
 		padding: 8px;
 	}
+
 	.asu {
 		display: flex;
 		justify-content: flex-start;
 		max-width: 30%;
 	}
+	.material-icons {
+		font-size: 3em;
+	}
+
 	/* .add {
 		display: flex;
 		justify-content: flex-start;
@@ -101,14 +110,14 @@
 		transform: rotate(135deg);
 		-webkit-transform: rotate(135deg);
 	}
-	.nuoli {
+	/* .nuoli {
 		margin-left: 1.5em;
 		display: flex;
 		justify-content: flex-start;
 		background-color: transparent;
 		text-decoration: none;
 		border: none;
-	}
+	} */
 	.modali {
 		display: flex;
 		flex-direction: column;

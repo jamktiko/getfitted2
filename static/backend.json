@@ -79,121 +79,145 @@
 					"id": 1,
 					"color": "Grey",
 					"category": "Tops",
-					"imageUrl": "/images/shirt7.png"
+					"imageUrl": "/images/shirt7.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 2,
 					"color": "White",
 					"category": "Shoes",
-					"imageUrl": "/images/shoes4.png"
+					"imageUrl": "/images/shoes4.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 3,
 					"color": "Brown",
 					"category": "Accessories",
-					"imageUrl": "/images/bracelet1.png"
+					"imageUrl": "/images/bracelet1.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 4,
 					"color": "Beige",
 					"category": "Hats",
-					"imageUrl": "/images/cap2.png"
+					"imageUrl": "/images/cap2.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 5,
 					"color": "",
 					"category": "Shoes",
-					"imageUrl": "/images/shoes1.png"
+					"imageUrl": "/images/shoes1.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 6,
 					"color": "",
 					"category": "Overalls",
-					"imageUrl": "/images/overall1.png"
+					"imageUrl": "/images/overall1.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 7,
 					"color": "",
 					"category": "Overalls",
-					"imageUrl": "/images/overall2.png"
+					"imageUrl": "/images/overall2.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 8,
 					"color": "",
 					"category": "Bottoms",
-					"imageUrl": "/images/pants1.png"
+					"imageUrl": "/images/pants1.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 9,
 					"color": "",
+
 					"category": "Bottoms",
-					"imageUrl": "/images/pants2.png"
+					"imageUrl": "/images/pants2.png",
+          "desc": "Placeholder text"
+
 				},
 				{
 					"id": 10,
 					"color": "",
 					"category": "Shoes",
-					"imageUrl": "/images/shoes2.png"
+					"imageUrl": "/images/shoes2.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 11,
 					"color": "",
+
 					"category": "Tops",
-					"imageUrl": "/images/shirt1.png"
+					"imageUrl": "/images/shirt1.png",
+          "desc": "Placeholder text"
+
 				},
 				{
 					"id": 12,
 					"color": "",
 					"category": "Overalls",
-					"imageUrl": "/images/overall3.png"
+					"imageUrl": "/images/overall3.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 13,
 					"color": "",
 					"category": "Tops",
-					"imageUrl": "/images/shirt2.png"
+					"imageUrl": "/images/shirt2.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 14,
 					"color": "",
 					"category": "Tops",
-					"imageUrl": "/images/shirt3.png"
+					"imageUrl": "/images/shirt3.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 15,
 					"color": "",
 					"category": "Tops",
-					"imageUrl": "/images/shirt4.png"
+					"imageUrl": "/images/shirt4.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 16,
 					"color": "",
 					"category": "Bottoms",
-					"imageUrl": "/images/pants3.png"
+					"imageUrl": "/images/pants3.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 17,
 					"color": "",
 					"category": "Tops",
-					"imageUrl": "/images/shirt5.png"
+					"imageUrl": "/images/shirt5.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 18,
 					"color": "",
 					"category": "Bottoms",
-					"imageUrl": "/images/pants4.png"
+					"imageUrl": "/images/pants4.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 19,
 					"color": "",
 					"category": "Tops",
-					"imageUrl": "/images/shirt6.png"
+					"imageUrl": "/images/shirt6.png",
+          "desc": "Placeholder text"
 				},
 				{
 					"id": 20,
 					"color": "",
 					"category": "Tops",
-					"imageUrl": "/images/shirt8.png"
+					"imageUrl": "/images/shirt8.png",
+          "desc": "Placeholder text"
 				}
 			],
 			"fits": [
