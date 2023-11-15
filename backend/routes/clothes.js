@@ -1,25 +1,24 @@
 /* eslint-disable new-cap */
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() });
 
 const ClothesController = require('../controllers/ClothesController');
 
-// http://localhost:3000/clothes/
+// Etsii kaikki vaatteet http://localhost:3000/clothes/
 router.get('/', ClothesController.findAll);
 
-// http://localhost:3000/clothes/Shirts
+//Etsi vaatteet kategorian mukaan http://localhost:3000/clothes/category/shoes
 router.get('/:category', ClothesController.findByCategory);
 
-// http:localhost:3000/clothes/color/Black
-router.get('/color/:color', ClothesController.findByColor);
+//Etsi postaukset käyttäjän userId:n perusteella http://localhost:3000/clothes/userid/114137952706567841882
+router.get('/userid/:userId', ClothesController.FindById);
 
-// http:localhost:3000/clothes
-router.get('/userid/:userId', ClothesController.FindByIdUserId);
+//Tietyn fittikuvan poistoon http://localhost:3000/fits
+router.delete('/:imageUrl/', ClothesController.DeleteClothe);
 
-////localhost:3000/clothes
-router.post('/', ClothesController.AddImage);
-
-//localhost:3000/clothes/650c2f5363961f7930b282df
-router.delete('/:id', ClothesController.DeleteClothing);
+//Lähettää kuvan s3 buckettiin ja tallentaa kuvaurlin sekä useridn.
+router.post('/api/posts', upload.single('image'), ClothesController.PostClothe);
 
 module.exports = router;

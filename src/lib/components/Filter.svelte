@@ -6,12 +6,12 @@
 
 	const kategoriat = ['Tops', 'Overalls', 'Bottoms', 'Shoes', 'Hats', 'Accessories'];
 
-	function toggleFilter(kategoria) {
-		const index = valittuFiltteri.indexOf(kategoria);
+	function toggleFilter(category) {
+		const index = valittuFiltteri.indexOf(category);
 		if (index === -1) {
-			valittuFiltteri = [...valittuFiltteri, kategoria];
+			valittuFiltteri = [...valittuFiltteri, category];
 		} else {
-			valittuFiltteri = valittuFiltteri.filter((item) => item !== kategoria);
+			valittuFiltteri = valittuFiltteri.filter((item) => item !== category);
 		}
 		dispatch('filtteriVaihettu', valittuFiltteri);
 	}
@@ -27,21 +27,21 @@
 </script>
 
 <div class="fixed inset-0 bg-white bg-opacity-30 flex items-center justify-center">
-	<div class="bg-grey p-12 bg-opacity-90 rounded-lg text-white font-mono text-sm">
-		<div class="space-y-6">
-			{#each kategoriat as kategoria}
+	<div class="bg-gray-600 p-5 rounded-lg text-white font-mono text-sm">
+		<div class="space-y-4">
+			{#each categoryt as category}
 				<label class="flex items-center">
 					<input
 						type="checkbox"
 						class="opacity-0 absolute h-6 w-6 z-20 cursor-pointer"
-						checked={valittuFiltteri.includes(kategoria)}
-						on:change={() => toggleFilter(kategoria)}
+						checked={valittuFiltteri.includes(category)}
+						on:change={() => toggleFilter(category)}
 					/>
 					<div
 						class="flex items-center justify-center h-6 w-6 border border-purple-300 bg-transparent rounded-md mr-4"
 					>
 						<svg
-							class="{valittuFiltteri.includes(kategoria) ? 'block' : 'hidden'} w-4 h-4 text-white"
+							class="{valittuFiltteri.includes(category) ? 'block' : 'hidden'} w-4 h-4 text-white"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 20 20"
 							fill="currentColor"
@@ -53,14 +53,13 @@
 							/>
 						</svg>
 					</div>
-					{kategoria}
+					{category}
 				</label>
 			{/each}
 		</div>
-		<div class="flex justify-evenly mt-10">
-			<button class="text-white font-bold font-heebo px-4" on:click={lisaaFiltteri}>APPLY</button>
-			<button class="text-white font-bold font-heebo px-4" on:click={tyhjennaFiltteri}>CLEAR</button
-			>
+		<div class="flex justify-evenly mt-5">
+			<button class="text-white font-bold" on:click={lisaaFiltteri}>APPLY</button>
+			<button class="text-white font-bold" on:click={tyhjennaFiltteri}>CLEAR</button>
 		</div>
 	</div>
 </div>
@@ -80,19 +79,19 @@
       dispatch('lisaaFiltteri', valittuFiltteri);
     }
   
-    function filtteriPaalla(kategoria) {
-      if (valittuFiltteri.includes(kategoria)) {
+    function filtteriPaalla(category) {
+      if (valittuFiltteri.includes(category)) {
         valittuFiltteri = valittuFiltteri.filter(
-          (filter) => filter !== kategoria
+          (filter) => filter !== category
         );
       } else {
-        valittuFiltteri = [...valittuFiltteri, kategoria];
+        valittuFiltteri = [...valittuFiltteri, category];
       }
       dispatch('filtteriVaihettu', valittuFiltteri);
     }
   
-    function isChecked(kategoria) {
-      return valittuFiltteri.includes(kategoria);
+    function isChecked(category) {
+      return valittuFiltteri.includes(category);
     }
   </script>
   

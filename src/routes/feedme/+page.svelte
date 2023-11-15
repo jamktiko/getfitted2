@@ -1,19 +1,22 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { onMount, setContext } from 'svelte';
 	import { u } from '$lib/stores/userStore';
-	import InspectFit from '$lib/components/InspectFit.svelte';
 	import UserFit from '$lib/components/FitCard.svelte';
+	import { valittuKuvaStore } from '$lib/stores/inspectStore.js';
 
 	let valittuKuva = null;
 
 	function handleFittiClick(userFit) {
-		valittuKuva = userFit;
+		valittuKuvaStore.set(userFit);
+		goto('/feedme/inspectfeedme');
 	}
 
 	function handleSuljeFitti() {
 		valittuKuva = null;
 	}
 
+	/*dkndna*/
 	/* funktio vie "ALL" buttonin App.svelte komponentin käyttöön */
 
 	/* jos omia fittejä ei ole niin näytetään koodin else osa */
@@ -26,12 +29,8 @@
 	}
 </script>
 
-
-<main class=" pb-28">
-
-	{#if valittuKuva}
-		<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
-	{:else if empty()}
+<main class=" pb-16">
+	{#if empty()}
 		<div class="mx-4">
 			<div class="flex">
 				<button
@@ -78,9 +77,9 @@
 				<!-- button mikä näyttää missä käyttäjä on tällä hetkellä -->
 			</div>
 			<div class="flex flex-col justify-center items-center font-source space-y-4 m-0 p-0 h-96">
-				<p class="text-xs sm:text-base">Oops... No posts yet, wanna make one?</p>
+				<p class="text-sm">Oops... No posts yet, wanna make one?</p>
 				<button
-					class="text-gray-500 bg-white border border-black rounded-full py-2 px-6 font-bold font-heebo text-sm text-center"
+					class="text-gray-500 bg-white border border-black rounded-full py-2 px-6 font-bold text-sm text-center"
 					on:click={() => goto('/camera')}>Add <span class="text-pink2"> +</span></button
 				>
 			</div>

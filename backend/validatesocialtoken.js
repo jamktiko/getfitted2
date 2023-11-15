@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-tabs */
 /*
 Tokenin validointi google-auth-library -kirjaston avulla. Toiminta esitelty
 osoitteessa: https://developers.google.com/identity/sign-in/web/backend-auth
@@ -14,15 +16,14 @@ const client = new OAuth2Client(GOOGLE_CLIENT_ID);
    näköisen verrattuna siihen jos olisi tehty callbackilla
 */
 async function validateSocialToken(token) {
-  const ticket = await client.verifyIdToken({
-    idToken: token,
-    audience: GOOGLE_CLIENT_ID,
-  });
-  const payload = ticket.getPayload();
-  console.log(payload['email']); // emailia voisi käyttää tunnisteena tokenissa
-  const userid = payload['sub']; // mutta userid on turvallisempi
-  console.log('Saatiin userid: ' + userid);
-  return userid; // userid palautetaan promisena
+	const ticket = await client.verifyIdToken({
+		idToken: token,
+		audience: GOOGLE_CLIENT_ID
+	});
+	const payload = ticket.getPayload();
+	const userid = payload['sub']; // mutta userid on turvallisempi
+	console.log(userid);
+	return userid; // userid palautetaan promisena
 }
 
 module.exports = validateSocialToken;

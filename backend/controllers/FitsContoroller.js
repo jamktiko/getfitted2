@@ -1,5 +1,5 @@
-/* eslint-disable indent */
 /* eslint-disable no-tabs */
+/* eslint-disable indent */
 /*
 Kontrolleri on olio, joka sisältää metodeja. Se tehty siksi, että
 saadaan erotettua reitit ja tietokantahakujen sovelluslogiikka toisistaan.
@@ -25,17 +25,8 @@ const FitsController = {
 			res.json(fits);
 		});
 	},
-	// 2) Fitti kuvan lisääminen
-	AddImage: async (req, res) => {
-		try {
-			const newImage = await Fit.create(req.body);
-			res.json(newImage);
-		} catch (error) {
-			console.error(error);
-			res.status(500).json({ error: 'Internal server error' });
-		}
-	},
-	// Etsii idn perusteella.
+
+	// 3) Etsii idn perusteella.
 	FindById: async (req, res) => {
 		try {
 			const newFit = await Fit.find({
@@ -48,14 +39,25 @@ const FitsController = {
 		}
 	},
 
-	// 3) Fittikuvan poistaminen
+	// 4) Fittikuvan poistaminen
 	DeleteFit: async (req, res) => {
 		try {
 			const imageUrl = req.params.imageUrl;
-			const fitpic = await Fit.deleteOne({ imageUrl: imageUrl });
-			res.json(fitpic);
+
+			console.log('Deleting image with URL:', imageUrl);
+
+			const fitpic = await Fit.deleteOne({ imageUrl });
+
+			if (fitpic.deletedCount === 0) {
+				console.log('Image not found in the database.');
+				return res.status(404).json({ message: 'Image not found' });
+			}
+
+			console.log('Image deleted successfully:', fitpic);
+
+			res.status(204).end(); // 204 No Content - Success response without content
 		} catch (error) {
-			console.error(error);
+			console.error('Error while deleting image:', error);
 			res.status(500).json({ error: 'Internal server error' });
 		}
 	},

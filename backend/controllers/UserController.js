@@ -2,42 +2,49 @@
 /* eslint-disable no-tabs */
 const User = require('../models/Users');
 const jwt = require('jsonwebtoken');
-const secret = process.env.SECRET; // Tässä tulisi olla salainen avain
+const secret = process.env.SECRET;
 
 const UsersController = {
 	PostUser: async (req, res) => {
 		try {
 			// Get the JWT token from the 'Authorization' header
 			const jwtToken = req.headers.authorization ? req.headers.authorization.split(' ')[1] : null;
+			console.log(jwtToken);
+			console.log(req.body.username);
 
-			if (jwtToken) {
-				// Decode the JWT token to get user information (e.g., userId)
-				const decodedToken = jwt.verify(jwtToken, secret); // Assuming 'secret' is your JWT secret
-				const userId = decodedToken.username;
-
-				if (decodedToken && decodedToken.payload) {
-					// Parse the payload JSON
-					const payload = JSON.parse(atob(decodedToken.payload.split('.')[1]));
-					const userName = payload.name; // Access the 'name' field from the payload
-					console.log(userName);
-					const user = new User({
-						userId: userId,
-						userName: req.body.username
-					});
-					await user.save();
-
-					// Now you can use userName or any other payload data as needed
-				} else {
-					console.error('Invalid or missing payload in the JWT token');
-					res.status(400).json({ error: 'Invalid JWT token' });
-				}
-			} else {
+			if (!jwtToken) {
 				console.error('JWT token not found in the Authorization header');
-				res.status(400).json({ error: 'JWT token not provided' });
+				return res.status(400).json({ error: 'JWT token not provided' });
 			}
+
+			// Decode the JWT token to get user information (e.g., userId)
+			const decodedToken = jwt.verify(jwtToken, secret);
+			console.log(decodedToken.username);
+
+			if (!decodedToken.username) {
+				console.log('kakka' + decodedToken.username);
+				console.error('Invalid or missing username in the JWT token');
+				return res.status(400).json({ error: 'Invalid or missing username in the JWT token' });
+			}
+
+			// Assuming 'username' is the correct field in your JWT
+			const userId = decodedToken.username;
+			console.log(userId);
+			const userName = req.body.username;
+			console.log('tässä on' + userName);
+
+			// Save the user to the database
+			const user = new User({
+				userId: userId,
+				userName: userName
+			});
+			await user.save();
+
+			// Respond with a success message or other appropriate response
+			return res.status(201).json({ message: 'User added successfully' });
 		} catch (error) {
-			console.error(error);
-			res.status(500).json({ error: 'Internal server error' });
+			console.error('Internal server error:', error);
+			return res.status(500).json({ error: 'Internal server error' });
 		}
 	}
 };

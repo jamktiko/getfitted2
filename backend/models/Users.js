@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-tabs */
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({

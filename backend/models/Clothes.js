@@ -1,10 +1,13 @@
+/* eslint-disable indent */
+/* eslint-disable no-tabs */
 const mongoose = require('mongoose');
 
 const ClothesSchema = new mongoose.Schema({
-  color: { type: String, required: false },
-  category: { type: String, required: true },
-  imageUrl: { type: String, required: true },
-  jwtToken: { type: String, required: true },
+	category: { type: String, required: false },
+	imageUrl: { type: String, required: false },
+	kuvaUrl: { type: String, required: false },
+	userId: { type: String, required: true },
+	imageDescription: { type: String, required: false }
 });
 
 const Clothes = mongoose.model('Clothes', ClothesSchema);

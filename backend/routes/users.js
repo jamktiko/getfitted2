@@ -14,6 +14,6 @@ const userCon = require('../controllers/UserController');
 router.post('/glogin', googleCon.authenticateGUser);
 
 // Postaaminen usercontrollerilla.
-router.post('/users', userCon.PostUser);
+router.post('/', userCon.PostUser);
 
 module.exports = router;

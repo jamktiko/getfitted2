@@ -4,7 +4,7 @@
 
 <!-- Näytetään käyttäjän fittikuva -->
 <div class="fitti">
-	<img src={userFit.kuvaUrl} alt="Fittikuva" class="w-full h-auto" />
+	<img src={userFit.kuvaUrl} alt="Fittikuva" class="w-full h-auto" loading="lazy" />
 </div>
 
 <!-- <style>
