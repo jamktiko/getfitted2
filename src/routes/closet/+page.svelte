@@ -7,6 +7,8 @@
 	import CameraModal from '$lib/components/CameraModal.svelte';
 	import { fly } from 'svelte/transition';
 	import { sineOut } from 'svelte/easing';
+	import DeleteFit from '../../lib/components/DeleteFit.svelte';
+	import Uploader from '$lib/components/Uploader.svelte';
 
 	export let valittuFiltteri = [];
 	let valittuItemi = null;
@@ -105,7 +107,7 @@
 			>
 		</div>
 		<div class="grid grid-cols-2 gap-8 mt-4">
-			{#each filteredVaatteet as userClothing (userClothing.id)}
+			{#each filteredVaatteet as userClothing}
 				<div on:click={() => handleVaateClick(userClothing)} class="p-2">
 					<UserClothing {userClothing} />
 				</div>

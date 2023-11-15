@@ -61,7 +61,7 @@
 			>
 		</div>
 		<div class="flex flex-col items-center relative w-full">
-			<img src={valittuKuva.imageUrl} alt="käyttäjän vaate" class="w-full max-h-full" />
+			<img src={valittuKuva.kuvaUrl} alt="käyttäjän vaate" class="w-full max-h-full" />
 		</div>
 
 		<div class="flex justify-between items-center border-b border-gray-600 p-2 py-6">
@@ -98,106 +98,4 @@
 	.material-icons {
 		font-size: 3em;
 	}
-
-	/* .getfittedlogo {
-        display: none;
-      } */
-	/* main {
-		margin: -8px;
-		z-index: 1;
-	}
-
-	.modali {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		position: relative;
-		/* top: 0;
-        left: 0; */ /*
-		width: 100%;
-		background-color: white;
-	}
-
-	.iso-kuva {
-		/* height: 100%; */
-	/*width: 100%;
-		max-height: 100%;
-		top: 0;
-	}
-
-	.nuoli {
-		position: absolute;
-		top: 7.5em;
-		left: 1.5em;
-		background-color: transparent;
-
-		color: white;
-		border: none;
-		padding: 10px 20px;
-		cursor: pointer;
-		z-index: 1000;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.arrow {
-		border: solid white;
-		border-radius: 15%;
-		border-width: 0 4px 4px 0;
-
-		padding: 0.5em;
-		transform: rotate(135deg);
-		-webkit-transform: rotate(135deg);
-		cursor: pointer;
-	}
-
-	.fa-heart-o {
-		color: #d499ff;
-		cursor: pointer;
-		font-size: 28px;
-		display: flex;
-		justify-content: center;
-		margin-right: 1.5em;
-		margin-top: 0.9em;
-	}
-
-	.fa-heart {
-		color: #d499ff;
-		cursor: pointer;
-		font-size: 28px;
-		display: flex;
-		justify-content: center;
-		margin-right: 1.5em;
-		margin-top: 0.9em;
-	}
-	.proflike {
-		position: relative;
-		z-index: 1;
-		height: 50px;
-		border-bottom: solid 1px rgb(90, 90, 90);
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		padding-bottom: 2em;
-	}
-	.user {
-		display: flex;
-		justify-content: center;
-		margin-left: 1.5em;
-		margin-top: 1.5em;
-		color: rgb(90, 90, 90);
-		font-family: 'Heebo', sans-serif;
-	}
-	.info {
-		font-family: 'Source Code Pro', monospace;
-		color: rgb(90, 90, 90);
-		display: flex;
-		justify-content: flex-start;
-		margin-left: 1.5em;
-		font-size: 0.8em;
-	}
-	.desc {
-		margin-bottom: 10em;
-	} */
 </style>

@@ -3,20 +3,90 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	export let showModal = false;
-
 	function closeModal() {
 		showModal = false;
 		dispatch('closeModal');
 	}
+
+	let fileInput;
+
+	function openFileInput() {
+		fileInput.click();
+	}
+
+	let file; // Store the selected file
+	let caption = '';
+	let showSubmitForm = false; // Flag to show or hide the submit form
+
+	function handleFileChange(event) {
+		const selectedFile = event.target.files[0];
+		if (selectedFile) {
+			// Handle the selected file here
+			console.log('Selected file:', selectedFile);
+			file = selectedFile;
+			showSubmitForm = true; // Show the submit form
+		} else {
+			showSubmitForm = false; // Hide the submit form if no file is selected
+		}
+	}
+
+	const submit = async (event) => {
+		event.preventDefault();
+		let jwtToken = sessionStorage.getItem('jwtToken');
+
+		const formData = new FormData();
+		formData.append('image', file);
+		formData.append('caption', caption);
+		formData.append('jwtToken', jwtToken);
+		try {
+			const response = await fetch('http://localhost:3000/fits/api/posts', {
+				method: 'POST',
+				body: formData,
+				headers: {
+					Authorization: `Bearer ${jwtToken}`
+				}
+			});
+
+			if (response.ok) {
+				// Handle success, e.g., redirect or display a success message.
+				console.log(jwtToken);
+				console.log('Post was successful');
+				const thisPage = window.location.pathname;
+				goto('/').then(() => goto(thisPage));
+			} else {
+				// Handle errors, e.g., display an error message.
+				console.error('Post failed');
+			}
+		} catch (error) {
+			console.error('Error:', error);
+		}
+		jwtToken = '';
+	};
 </script>
 
-<div class="z-50 fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center">
-	<div class="flex flex-col bg-grey p-12 bg-opacity-90 rounded-lg text-white font-heebo text-sm">
-		<button
-			class="p-2 border-gray-100 rounded-full border mb-2 px-4"
-			on:click={() => goto('/camera')}>Open camera</button
-		>
-		<button class="p-2 border-gray-100 rounded-full border mb-2 px-4">Add from library</button>
-		<button class="text-white font-bold p-2 mt-2" on:click={closeModal}>CLOSE</button>
+{#if !showSubmitForm}
+	<div class="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center">
+		<div class="flex flex-col bg-grey p-12 bg-opacity-90 rounded-lg text-white font-heebo text-sm">
+			<button class="p-2 border-gray-100 rounded-full border mb-2 px-4" on:click={openFileInput}
+				>Add from library</button
+			>
+			<input
+				type="file"
+				accept="image/*"
+				name="image"
+				style="display: none;"
+				bind:this={fileInput}
+				on:change={handleFileChange}
+			/>
+			<button
+				class="p-2 border-gray-100 rounded-full border mb-2 px-4"
+				on:click={() => goto('/camera')}>Open camera</button
+			>
+			<button class="text-white font-bold p-2 mt-2" on:click={closeModal}>CLOSE</button>
+		</div>
 	</div>
-</div>
+{:else}
+	<form on:submit={submit}>
+		<button type="submit">Submit</button>
+	</form>
+{/if}

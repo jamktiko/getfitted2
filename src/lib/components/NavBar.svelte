@@ -55,4 +55,10 @@
 			<CameraModal on:closeModal={handleCloseModal} />
 		{/if}
 	</div>
+
+	<div>
+		{#if showModal}
+			<CameraModal on:closeModal={handleCloseModal} />
+		{/if}
+	</div>
 </section>
