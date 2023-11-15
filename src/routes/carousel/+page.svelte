@@ -1,7 +1,30 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { afterUpdate } from 'svelte';
 	import { u } from '$lib/stores/userStore';
 	$: console.log($u.userClothes);
+
+	export let open = false;
+
+	afterUpdate(() => {
+		if (open2) {
+			scrollToOutput();
+		}
+	});
+
+	const scrollToOutput = () => {
+		const outputElement = document.getElementById('extra');
+		if (outputElement) {
+			outputElement.scrollIntoView({ behavior: 'smooth' });
+		}
+		console.log('kkdkd');
+	};
+
+	/* export let arrayca = [];
+
+	function pushToArray() {
+		arrayca.push();
+	} */
 
 	function shuffleArray(array) {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -105,21 +128,6 @@
 		}
 	}
 
-	// Functions to navigate to the next image for the existing carousels
-	function nextExisting(carouselIndex) {
-		existingCarousels[carouselIndex].currentIndex =
-			(existingCarousels[carouselIndex].currentIndex + 1) %
-			existingCarousels[carouselIndex].images.length;
-	}
-
-	function previousExisting(carouselIndex) {
-		existingCarousels[carouselIndex].currentIndex =
-			(existingCarousels[carouselIndex].currentIndex -
-				1 +
-				existingCarousels[carouselIndex].images.length) %
-			existingCarousels[carouselIndex].images.length;
-	}
-
 	// Functions to navigate to the next image for the extra carousels
 	function nextExtra(carouselIndex) {
 		extraCarousels[carouselIndex].currentIndex =
@@ -136,82 +144,105 @@
 	}
 </script>
 
-<div class="pb-20">
-	<div class="flex justify-evenly mt-2">
-		<button
-			class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
-			on:click={() => goto('/carousel/carousel2')}>Dresses & Overalls</button
-		>
-		<button
-			class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
-			on:click={() => carousels.forEach((_, index) => mixAndMatch(index))}>Mix & Match</button
-		>
-	</div>
-	<div class="carousel-container">
-		<!-- flex flex-col items-center justify-start h-[61vh] overflow-hidden mt-3 -->
-		{#each carousels as carousel, carouselIndex (carousel)}
-			<div
-				class="carousel"
-				on:touchstart={(event) => handleSwipeStart(event, carouselIndex)}
-				on:touchend={(event) => handleSwipeEnd(event, carouselIndex)}
+<body>
+	<div class="pb-20">
+		<div class="flex justify-evenly mt-2">
+			<button
+				class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+				on:click={() => goto('/carousel/carousel2')}>Dresses & Overalls</button
 			>
-				<!-- relative flex items-center justify-center h-[80vh] w-full overflow-hidden mb-6 z-10 -->
-				{#each carousel.images as image, i (image)}
-					{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
-						<img
-							src={image}
-							alt={`Image ${i + 1}`}
-							class={i === carousel.currentIndex
-								? 'current-image'
-								: i ===
-								  (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
-								? 'prev-image'
-								: i === (carousel.currentIndex + 1) % carousel.images.length
-								? 'next-image'
-								: ''}
-						/>
-					{/if}
+			<button
+				class="bg-transparent border border-gray-600 text-gray-500 text-center no-underline inline-block text-xs px-5 py-2 font-source rounded-full"
+				on:click={() => carousels.forEach((_, index) => mixAndMatch(index))}>Mix & Match</button
+			>
+		</div>
+		<div class="carousel-container">
+			<!-- flex flex-col items-center justify-start h-[61vh] overflow-hidden mt-3 -->
+			{#each carousels as carousel, carouselIndex (carousel)}
+				<div
+					class="carousel"
+					on:touchstart={(event) => handleSwipeStart(event, carouselIndex)}
+					on:touchend={(event) => handleSwipeEnd(event, carouselIndex)}
+				>
+					<!-- relative flex items-center justify-center h-[80vh] w-full overflow-hidden mb-6 z-10 -->
+					{#each carousel.images as image, i (image)}
+						{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
+							<img
+								src={image}
+								alt={`Image ${i + 1}`}
+								class={i === carousel.currentIndex
+									? 'current-image'
+									: i ===
+									  (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
+									? 'prev-image'
+									: i === (carousel.currentIndex + 1) % carousel.images.length
+									? 'next-image'
+									: ''}
+							/>
+						{/if}
+					{/each}
+				</div>
+			{/each}
+		</div>
+		{#if open === false}
+			<div class="flex flex-col mt-6">
+				<button
+					on:click={() => {
+						open = true;
+					}}
+				>
+					<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
+						CHOOSE EXTRAS
+					</p>
+					<span class="material-icons text-pink1 text-4xl -rotate-90">chevron_left</span>
+				</button>
+			</div>
+		{/if}
+		{#if open}
+			<div
+				id="extra"
+				class="flex flex-row justify-evenly items-center mx-auto xs:px-2 sm:px-6 sm:max-w-[540px] content-center"
+			>
+				<div class="bg-nav w-24 xs:w-28 h-24 xs:h-28 border rounded-md border-none">
+					<section><!-- {arrayca1} --></section>
+				</div>
+				<div class="bg-nav w-24 xs:w-28 h-24 xs:h-28 border rounded-md border-none">
+					<section><!-- {arrayca2} --></section>
+				</div>
+				<div class="bg-nav w-24 xs:w-28 h-24 xs:h-28 border rounded-md border-none">
+					<section><!-- {arrayca3} --></section>
+				</div>
+			</div>
+
+			<div class="carousel-container2">
+				{#each extraCarousels as carousel, carouselIndex (carousel)}
+					<div
+						class="carousel"
+						on:touchstart={(event) => handleSwipeStartExtra(event, carouselIndex)}
+						on:touchend={(event) => handleSwipeEndExtra(event, carouselIndex)}
+					>
+						{#each carousel.images as image, i (image)}
+							{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
+								<img
+									src={image}
+									alt={`Image ${i + 1}`}
+									class={i === carousel.currentIndex
+										? 'current-image2'
+										: i ===
+										  (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
+										? 'prev-image2'
+										: i === (carousel.currentIndex + 1) % carousel.images.length
+										? 'next-image2'
+										: ''}
+								/>
+							{/if}
+						{/each}
+					</div>
 				{/each}
 			</div>
-		{/each}
+		{/if}
 	</div>
-
-	<div class="flex flex-col mt-12">
-		<button>
-			<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
-				CHOOSE EXTRAS
-			</p>
-			<p class="nuoli"><i class="arrow" /></p>
-		</button>
-	</div>
-
-	<div class="carousel-container2">
-		{#each extraCarousels as carousel, carouselIndex (carousel)}
-			<div
-				class="carousel"
-				on:touchstart={(event) => handleSwipeStartExtra(event, carouselIndex)}
-				on:touchend={(event) => handleSwipeEndExtra(event, carouselIndex)}
-			>
-				{#each carousel.images as image, i (image)}
-					{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
-						<img
-							src={image}
-							alt={`Image ${i + 1}`}
-							class={i === carousel.currentIndex
-								? 'current-image2'
-								: i ===
-								  (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
-								? 'prev-image2'
-								: i === (carousel.currentIndex + 1) % carousel.images.length
-								? 'next-image2'
-								: ''}
-						/>
-					{/if}
-				{/each}
-			</div>
-		{/each}
-	</div>
-</div>
+</body>
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
@@ -275,7 +306,7 @@
 		transform: translateX(100%);
 	}
 	.current-image2 {
-		transform: scale(1);
+		transform: scale(1.5);
 		z-index: 1;
 	}
 
@@ -295,62 +326,4 @@
 	.next-image2 {
 		transform: translateX(130%);
 	}
-	/* 	.napit {
-		background-color: transparent;
-		border: 1px solid rgba(64, 64, 64, 1);
-		color: rgb(124, 120, 120);
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 0.8em;
-		cursor: pointer;
-		border-radius: 30px;
-		padding: 0.6em 1.5em;
-		margin-bottom: 1.5em;
-		font-family: 'Source Code Pro', monospace;
-	} */
-	/* .vaatenapi {
-		display: flex;
-		justify-content: space-evenly;
-		margin-top: 0.5em;
-	} */
-	/* 	.choose {
-		font-family: 'Heebo', sans-serif;
-		text-decoration: none;
-		background-color: transparent;
-		color: rgb(90, 90, 90);
-		border: none;
-		font-weight: bolder;
-		display: flex;
-		justify-content: center;
-		margin: 0;
-		cursor: pointer;
-		font-size: 0.9em;
-	} */
-	.arrow {
-		border: solid #d499ff;
-		border-radius: 15%;
-		border-width: 0 3.3px 3.3px 0;
-		padding: 0.5em;
-		transform: rotate(45deg);
-		-webkit-transform: rotate(45deg);
-	}
-	.nuoli {
-		background-color: transparent;
-		text-decoration: none;
-		border: none;
-		display: flex;
-		justify-content: center;
-		cursor: pointer;
-	}
-	/* .alanapit {
-		display: flex;
-		flex-direction: column;
-		margin-top: 0.5em;
-	} */
-	/* button {
-		background-color: transparent;
-		text-decoration: none;
-		border: none;
-	} */
 </style>

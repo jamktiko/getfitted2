@@ -88,30 +88,34 @@
 			<canvas bind:this={canvasElementti} class="hidden w-full h-full" />
 		</div>
 	{:else}
-		<div class="kuva-container flex flex-col items-center justify-between w-full h-screen bg-white">
-			<button on:click={otaUusi} class="absolute top-8 left-8 flex">
-				<i
-					class="arrow transform rotate-135 border border-gray-400 rounded border-r-0 border-b-0 p-2"
-				/></button
-			>
-			<button
-				class="hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline {selectedContent ===
-				'first'
-					? 'bg-gray-600'
-					: 'bg-gray-200'}"
-				on:click={() => selectContent('first')}
-			>
-				Add to wardrobe
-			</button>
-			<button
-				class="hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline {selectedContent ===
-				'second'
-					? 'bg-gray-600'
-					: 'bg-gray-200'}"
-				on:click={() => selectContent('second')}
-			>
-				Add to outfits
-			</button>
+		<div class="flex flex-col items-center justify-between h-screen bg-white">
+			<div class="flex flex-row ml-6 mt-9">
+				<button
+					on:click={otaUusi}
+					class=" bg-transparent outline-none border-none absolute top-7 left-[0px] xs:left-3"
+				>
+					<span class="material-icons text-grey">chevron_left</span></button
+				>
+
+				<button
+					class=" font-source border rounded-full py-2 px-3 xs:px-4 mx-0.5 xs:mx-2.5 text-[12px] sm:text-[15px] text-center flex justify-center {selectedContent ===
+					'first'
+						? 'bg-grey text-white focus:outline-none focus:shadow-outline'
+						: 'bg-transparent text-grey border-gray-400'}"
+					on:click={() => selectContent('first')}
+				>
+					Add to wardrobe
+				</button>
+				<button
+					class=" font-source border rounded-full py-2 px-3 xs:px-4 mx-0.5 xs:mx-2.5 text-[12px] sm:text-[15px] text-center flex justify-center {selectedContent ===
+					'second'
+						? 'bg-grey text-white focus:outline-none focus:shadow-outline'
+						: 'bg-transparent text-grey border-gray-400'}"
+					on:click={() => selectContent('second')}
+				>
+					Add to outfits
+				</button>
+			</div>
 			<img
 				class="w-full h-3/6 object-cover mt-4 mb-4 flex-grow"
 				src={kuvaData}

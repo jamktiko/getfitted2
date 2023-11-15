@@ -122,8 +122,13 @@
 		<div>
 			<img src={imageData} alt="kuva" class="w-full h-3/6 object-cover mt-4 mb-4 flex-grow" />
 		</div>
-		<div>
-			<label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+		<div class="mb-5 mt-4 w-full h-[78.2%]">
+			<img class=" w-full h-full object-cover" src={imageData} alt="kuva" />
+		</div>
+		<div class="flex justify-center flex-col mb-5">
+			<label
+				for="countries"
+				class="text-center mb-1 text-[14px] font-source font-extrabold text-gray-900"
 				>Select a category</label
 			>
 			<select
@@ -147,9 +152,9 @@
 				bind:value={caption}
 				id="message"
 				rows="1"
+				class="block p-2.5 w-100s text-xs text-gray-900 bg-gray-100 rounded-lg outline-gray-500 focus:border-grey m-4 mb-12"
+				placeholder="..."
 				maxlength="100"
-				class="block p-2.5 w-100s text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-				placeholder="Your description"
 			/>
 		</div>
 	</div>
@@ -159,17 +164,20 @@
 		<div>
 			<img src={imageData} alt="kuva" class="w-full h-3/6 object-cover mt-4 mb-4 flex-grow" />
 		</div>
-		<div>
-			<label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+		<div class="mb-5 mt-4 w-full h-[78.2%]">
+			<img class="w-full h-full object-cover" src={imageData} alt="kuva" />
+		</div>
+		<div class="flex justify-center flex-col">
+			<label for="message" class="text-center mb-1 text-[14px] font-source text-grey"
 				>Add information about your outfit</label
 			>
 			<textarea
 				bind:value={caption}
 				id="message"
 				rows="1"
+				class=" p-2.5 w-100s text-xs text-gray-900 bg-gray-100 rounded-lg outline-gray-500 focus:border-grey m-4 mb-12"
+				placeholder="..."
 				maxlength="150"
-				class="block p-2.5 w-100s text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-				placeholder="Your description"
 			/>
 		</div>
 	</div>

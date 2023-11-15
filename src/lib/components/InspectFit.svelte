@@ -63,6 +63,7 @@
 		<div class="flex flex-col items-center relative w-full">
 			<img src={valittuKuva.kuvaUrl} alt="käyttäjän vaate" class="w-full max-h-full" />
 		</div>
+
 		<div class="flex justify-between items-center border-b border-gray-600 p-2 py-6">
 			<h3 class="text-gray-600 text-xl font-bold font-heebo pl-3">@{$u.userName}</h3>
 
@@ -78,14 +79,15 @@
 				{/if}
 			</span>
 		</div>
+
 		<div class="mt-6 mx-6">
-			<p class="text-gray-600 font-source text-sm flex justify-start mb-2">
+			<p class="text-gray-600 font-source text-xs sm:text-sm flex justify-start mb-2">
 				<li>North Face bottoms, bought 2023</li>
 			</p>
-			<p class="text-gray-600 font-source text-sm flex justify-start mb-2">
+			<p class="text-gray-600 font-source text-xs sm:text-sm flex justify-start mb-2">
 				<li>Everest beige vest, bought 2023</li>
 			</p>
-			<p class="text-gray-600 font-source text-sm flex justify-start mb-2">
+			<p class="text-gray-600 font-source text-xs sm:text-sm flex justify-start mb-2">
 				<li>North Face gloves</li>
 			</p>
 		</div>
