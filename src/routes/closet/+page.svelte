@@ -4,13 +4,16 @@
 	import UserClothing from '$lib/components/ClothingCard.svelte';
 	import FiltteriModal from '$lib/components/Filter.svelte';
 	import VaateModaali from '$lib/components/InspectClothing.svelte';
+	import CameraModal from '$lib/components/CameraModal.svelte';
 	import { fly } from 'svelte/transition';
 	import { sineOut } from 'svelte/easing';
+
 	export let valittuFiltteri = [];
 	let valittuItemi = null;
 	let naytaFiltteri = false;
 	let filters = [];
 	let filteredVaatteet = $u.userClothes;
+	export let showModal = false;
 
 	function handleFiltterointi(event) {
 		filters = event.detail;
@@ -50,6 +53,10 @@
 	function handleSuljeVaate() {
 		valittuItemi = null;
 	}
+
+	function handleCloseModal() {
+		showModal = false;
+	}
 </script>
 
 <main class=" pb-20 m-4">
@@ -61,8 +68,11 @@
 				<p>Oops... You have no clothes in your wardrobe</p>
 				<button
 					class="text-gray-500 bg-white border border-black rounded-full py-2 px-6 font-bold font-heebo text-sm text-center"
-					on:click={() => goto('/camera')}>Add <span class="text-pink2"> +</span></button
+					on:click={() => (showModal = true)}>Add <span class="text-pink2"> +</span></button
 				>
+				{#if showModal}
+					<CameraModal on:closeModal={handleCloseModal} />
+				{/if}
 			</div>
 		</div>
 	{:else if valittuItemi}

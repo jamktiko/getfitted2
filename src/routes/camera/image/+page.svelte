@@ -33,10 +33,10 @@
 				>Add <span class="text-pink2">+</span></button
 			>
 		</div>
-		<div class="mb-5">
-			<img class="w-full h-full object-cover mt-4 mb-4 flex flex-grow" src={imageData} alt="kuva" />
+		<div class="mb-5 mt-4 w-full h-[78.2%]">
+			<img class=" w-full h-full object-cover" src={imageData} alt="kuva" />
 		</div>
-		<div class="flex justify-center flex-col mb-8">
+		<div class="flex justify-center flex-col mb-5">
 			<label
 				for="countries"
 				class="text-center mb-1 text-[14px] font-source font-extrabold text-gray-900"
@@ -47,7 +47,7 @@
 				class="bg-gray-100 m-4 mx-24 text-grey font-heebo font-medium text-center text-xs rounded-lg outline-gray-500 p-3"
 			>
 				<option>Tops</option>
-				<option class="font-size">Bottoms</option>
+				<option>Bottoms</option>
 				<option>Overalls</option>
 				<option>Hats</option>
 				<option>Shoes</option>
@@ -61,7 +61,7 @@
 			<textarea
 				id="message"
 				rows="1"
-				class="block p-2.5 w-100s text-xs text-gray-900 bg-gray-100 rounded-lg outline-gray-500 focus:border-grey m-4"
+				class="block p-2.5 w-100s text-xs text-gray-900 bg-gray-100 rounded-lg outline-gray-500 focus:border-grey m-4 mb-12"
 				placeholder="..."
 			/>
 		</div>
@@ -77,8 +77,8 @@
 				>Add <span class="text-pink2">+</span></button
 			>
 		</div>
-		<div>
-			<img class="w-full h-full object-cover mt-4 mb-4 flex flex-grow" src={imageData} alt="kuva" />
+		<div class="mb-5 mt-4 w-full h-[78.2%]">
+			<img class="w-full h-full object-cover" src={imageData} alt="kuva" />
 		</div>
 		<div class="flex justify-center flex-col">
 			<label for="message" class="text-center mb-1 text-[14px] font-source text-grey"
@@ -87,7 +87,7 @@
 			<textarea
 				id="message"
 				rows="1"
-				class=" p-2.5 w-100s text-xs text-gray-900 bg-gray-100 rounded-lg outline-gray-500 focus:border-grey m-4"
+				class=" p-2.5 w-100s text-xs text-gray-900 bg-gray-100 rounded-lg outline-gray-500 focus:border-grey m-4 mb-12"
 				placeholder="..."
 			/>
 		</div>

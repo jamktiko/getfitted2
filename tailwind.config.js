@@ -11,14 +11,10 @@ export default {
 			xs: '390px',
 			sm: '640px'
 		},
-
-		fontSize: {
-			icon: '32px'
-		},
 		extend: {
 			colors: {
 				grey: '#404040',
-				pink1: '#d499ff',
+				pink1: '#B56BFF',
 				pink2: '#c97eff',
 				black: '#000000',
 				pink3: '#e3befd',

@@ -1,7 +1,23 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { afterUpdate } from 'svelte';
 	import { u } from '$lib/stores/userStore';
 	$: console.log($u.userClothes);
+
+	export let open = false;
+
+	afterUpdate(() => {
+		if (open) {
+			scrollToOutput();
+		}
+	});
+	const scrollToOutput = () => {
+		const outputElement = document.getElementById('extra');
+		if (outputElement) {
+			outputElement.scrollIntoView({ behavior: 'smooth' });
+		}
+		console.log('kkdkd');
+	};
 
 	function shuffleArray(array) {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -145,41 +161,53 @@
 			</div>
 		{/each}
 	</div>
-	<div class="flex flex-col mt-28">
-		<button>
-			<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
-				CHOOSE EXTRAS
-			</p>
-			<p class="nuoli"><i class="arrow" /></p>
-		</button>
-	</div>
+	{#if open === false}
+		<div class="flex flex-col mt-6">
+			<button on:click={() => (open = true)}>
+				<p class="text-gray-600 font-heebo text-sm bg-transparent no-underline font-extrabold">
+					CHOOSE EXTRAS
+				</p>
+				<span class="material-icons text-pink1 text-4xl -rotate-90">chevron_left</span>
+			</button>
+		</div>
+	{/if}
+	{#if open}
+		<div
+			id="extra"
+			class="flex flex-row justify-evenly items-center mx-auto xs:px-2 sm:px-6 sm:max-w-[540px] content-center"
+		>
+			<div class="bg-nav w-24 xs:w-28 h-24 xs:h-28 border rounded-md border-none" />
+			<div class="bg-nav w-24 xs:w-28 h-24 xs:h-28 border rounded-md border-none" />
+			<div class="bg-nav w-24 xs:w-28 h-24 xs:h-28 border rounded-md border-none" />
+		</div>
 
-	<div class="carousel-container2">
-		{#each extraCarousels as carousel, carouselIndex (carousel)}
-			<div
-				class="carousel"
-				on:touchstart={(event) => handleSwipeStartExtra(event, carouselIndex)}
-				on:touchend={(event) => handleSwipeEndExtra(event, carouselIndex)}
-			>
-				{#each carousel.images as image, i (image)}
-					{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
-						<img
-							src={image}
-							alt={`Image ${i + 1}`}
-							class={i === carousel.currentIndex
-								? 'current-image2'
-								: i ===
-								  (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
-								? 'prev-image2'
-								: i === (carousel.currentIndex + 1) % carousel.images.length
-								? 'next-image2'
-								: ''}
-						/>
-					{/if}
-				{/each}
-			</div>
-		{/each}
-	</div>
+		<div class="carousel-container2">
+			{#each extraCarousels as carousel, carouselIndex (carousel)}
+				<div
+					class="carousel"
+					on:touchstart={(event) => handleSwipeStartExtra(event, carouselIndex)}
+					on:touchend={(event) => handleSwipeEndExtra(event, carouselIndex)}
+				>
+					{#each carousel.images as image, i (image)}
+						{#if i === carousel.currentIndex || i === (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length || i === (carousel.currentIndex + 1) % carousel.images.length}
+							<img
+								src={image}
+								alt={`Image ${i + 1}`}
+								class={i === carousel.currentIndex
+									? 'current-image2'
+									: i ===
+									  (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length
+									? 'prev-image2'
+									: i === (carousel.currentIndex + 1) % carousel.images.length
+									? 'next-image2'
+									: ''}
+							/>
+						{/if}
+					{/each}
+				</div>
+			{/each}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -203,7 +231,7 @@
 		justify-content: flex-start;
 		height: 47vh;
 		overflow: hidden;
-		margin-top: 3em;
+		margin-top: 2em;
 		margin-bottom: 3.5em;
 	}
 	.carousel-container2 {
@@ -214,7 +242,7 @@
 		height: 55vh;
 		overflow: hidden;
 		margin-top: 2em;
-		margin-bottom: 3em;
+		margin-bottom: 1.5em;
 	}
 	.carousel img {
 		max-height: 100%;
@@ -245,7 +273,7 @@
 		transform: translateX(90%);
 	}
 	.current-image2 {
-		transform: scale(1);
+		transform: scale(1.5);
 		z-index: 1;
 	}
 
@@ -265,66 +293,4 @@
 	.next-image2 {
 		transform: translateX(130%);
 	}
-	/* 	.napit {
-		background-color: transparent;
-		border: 1px solid rgba(64, 64, 64, 1);
-		color: rgb(124, 120, 120);
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 0.8em;
-		cursor: pointer;
-		border-radius: 30px;
-		padding: 0.6em 1.5em;
-		margin-bottom: 1.5em;
-		font-family: 'Source Code Pro', monospace;
-	} */
-	/* .vaatenapi {
-		display: flex;
-		justify-content: space-evenly;
-		margin-top: 0.5em;
-	} */
-	/* 	.choose {
-		font-family: 'Heebo', sans-serif;
-		text-decoration: none;
-		background-color: transparent;
-		color: rgb(90, 90, 90);
-		border: none;
-		font-weight: bolder;
-		display: flex;
-		justify-content: center;
-		margin: 0;
-		cursor: pointer;
-		font-size: 0.9em;
-		order: 1;
-	} */
-	.arrow {
-		border: solid #d499ff;
-		border-radius: 15%;
-		border-width: 0 3.3px 3.3px 0;
-		padding: 0.5em;
-		transform: rotate(45deg);
-		-webkit-transform: rotate(45deg);
-	}
-	.nuoli {
-		background-color: transparent;
-		text-decoration: none;
-		border: none;
-		display: flex;
-		justify-content: center;
-		cursor: pointer;
-		order: 2;
-		margin: 0;
-		/* padding-top: 0.6em; */
-	}
-	/* .alanapit {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	} */
-	/* 	button {
-		background-color: transparent;
-		text-decoration: none;
-		border: none;
-	} */
 </style>
