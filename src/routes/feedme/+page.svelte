@@ -1,19 +1,22 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { onMount, setContext } from 'svelte';
 	import { u } from '$lib/stores/userStore';
-	import InspectFit from '$lib/components/InspectFit.svelte';
 	import UserFit from '$lib/components/FitCard.svelte';
+	import { valittuKuvaStore } from '$lib/stores/inspectStore.js';
 
 	let valittuKuva = null;
 
 	function handleFittiClick(userFit) {
-		valittuKuva = userFit;
+		valittuKuvaStore.set(userFit);
+		goto('/feedme/inspectfeedme');
 	}
 
 	function handleSuljeFitti() {
 		valittuKuva = null;
 	}
 
+	/*dkndna*/
 	/* funktio vie "ALL" buttonin App.svelte komponentin käyttöön */
 
 	/* jos omia fittejä ei ole niin näytetään koodin else osa */
@@ -27,9 +30,7 @@
 </script>
 
 <main class=" pb-16">
-	{#if valittuKuva}
-		<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
-	{:else if empty()}
+	{#if empty()}
 		<div class="mx-4">
 			<div class="flex">
 				<button
@@ -52,7 +53,7 @@
 				>
 			</div>
 			<div class="grid grid-cols-2 gap-4 mt-4">
-				{#each $u.userFits as userFit (userFit.id)}
+				{#each $u.userFits as userFit}
 					<div on:click={() => handleFittiClick(userFit)}>
 						<UserFit {userFit} />
 					</div>

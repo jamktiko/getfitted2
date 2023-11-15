@@ -1,13 +1,13 @@
 <script>
-    export let userClothing;
+	export let userClothing;
 </script>
-  
-  <!-- Näytetään käyttäjän vaatekappale kuvana -->
-  <div class="vaate">
-    <img src={userClothing.imageUrl} alt="Vaatekappale" />
-  </div>
-  
-  <!-- <style>
+
+<!-- Näytetään käyttäjän vaatekappale kuvana -->
+<div class="vaate">
+	<img src={userClothing.kuvaUrl} alt="Vaatekappale" />
+</div>
+
+<!-- <style>
     .vaate {
       border: 1px solid rgb (10, 10, 10);
       padding: 10px;
@@ -22,4 +22,3 @@
         margin-bottom: 10px;*/
     }
   </style> -->
-  

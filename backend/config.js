@@ -1,0 +1,5 @@
+module.exports = {
+  secret:
+    'SSNDFOSODVNVOSNDVONSDONVISNDIVNSIDVIUSDNVIUNSAOUDVUOIASD43423656523562563762',
+  // Other configuration settings
+};

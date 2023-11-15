@@ -1,15 +1,8 @@
 <script>
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { all, u } from '$lib/stores/userStore';
+	import { all } from '$lib/stores/userStore';
 	import InspectFit from '$lib/components/InspectFit.svelte';
-	$: if ($u.isLoggedIn) {
-		console.log('User is logged in:', $u.userName);
-		console.log('Users clothes:', $u.userClothes);
-	}
-	$: if ($u.isLoggedIn) {
-		console.log('All clothes:', $all.allFits);
-	}
-
 	let valittuKuva = null;
 
 	function handleFittiClick(fit) {
@@ -18,12 +11,48 @@
 	function handleSuljeFitti() {
 		valittuKuva = null;
 	}
+
+	function handleDelete() {
+		valittuKuva = null;
+	}
+
+	onMount(async () => {
+		await handleFetchFitImages();
+	});
+
+	async function fetchAllFitImages() {
+		try {
+			const response = await fetch('http://localhost:3000/fits'); // Korvaa tämä oikealla endpointilla
+
+			if (response.ok) {
+				const fitImages = await response.json();
+				return fitImages;
+			} else {
+				console.error('Error fetching fit images');
+				return null;
+			}
+		} catch (error) {
+			console.error(error);
+			return null;
+		}
+	}
+
+	async function handleFetchFitImages() {
+		const fitImages = await fetchAllFitImages();
+
+		if (fitImages !== null) {
+			// Tee jotain fit-kuvien kanssa, esim. tallenna ne storeen
+			all.set({
+				allFits: fitImages
+			});
+		}
+	}
 </script>
 
 <main class="pb-16">
 	<div class="mx-4">
 		{#if valittuKuva}
-			<InspectFit {valittuKuva} on:close={handleSuljeFitti} />
+			<InspectFit {valittuKuva} on:close={handleSuljeFitti} on:sulku={handleDelete} />
 		{:else}
 			<div class="flex">
 				<button
@@ -32,14 +61,19 @@
 				>
 				<button
 					class="flex-1 p-4 m-4 font-source text-base sm:text-lg text-black"
-					on:click={() => goto('/home/feedme')}>Me</button
+					on:click={() => goto('/feedme')}>Me</button
 				>
 			</div>
 			<div class="grid grid-cols-2 gap-4 mt-4">
 				<!-- each lohko käy läpi kaikkien käyttäjien fitit ja näyttää niiden kuvat -->
-				{#each $all.allFits as fit}
-					<div class="fitti" on:click={() => handleFittiClick(fit)}>
-						<img src={fit.imageUrl} alt="Fittikuva" class="w-full h-auto" />
+				{#each $all.allFits.reverse() as fit}
+					<div class="fitti mb-4" on:click={() => handleFittiClick(fit)}>
+						<img
+							src={fit.kuvaUrl}
+							alt="Fittikuva"
+							class="w-full h-full object-cover"
+							loading="lazy"
+						/>
 					</div>
 				{/each}
 			</div>

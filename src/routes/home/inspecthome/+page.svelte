@@ -5,6 +5,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { showContent } from '$lib/stores/layoutStore';
 	import { createEventDispatcher } from 'svelte';
+	import DeleteFit from './DeleteFit.svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -22,6 +23,9 @@
 		dispatch('close');
 	}
 
+	function handleSulje() {
+		dispatch('sulku');
+	}
 	console.log(valittuKuva);
 
 	$: isLiked = $u.myLikes && valittuKuva ? $u.myLikes.includes(valittuKuva.imageUrl) : null;
@@ -55,19 +59,18 @@
 		<div class="absolute flex items-center justify-start z-50 p-2">
 			<button
 				on:click={handleSulku}
-				class="ml-2 mt-5 bg-transparent outline-none border-none flex justify-start"
+				class="bg-transparent text-black p-3 flex items-center justify-center"
 			>
-				<span class="material-icons text-grey">chevron_left</span></button
-			>
+				<i class="border-2 border-black rounded-md p-1 transform rotate-135" />
+			</button>
 		</div>
 		<div class="flex flex-col items-center relative w-full">
 			<img src={valittuKuva.kuvaUrl} alt="käyttäjän vaate" class="w-full max-h-full" />
 		</div>
 		<div class="flex justify-between items-center border-b border-gray-600 p-2 py-6">
 			<h3 class="text-gray-600 text-xl font-bold font-heebo pl-3">@{$u.userName}</h3>
-
 			<span
-				class="text-purple-300 cursor-pointer text-3xl pr-3 flex justify-center"
+				class="text-purple-300 cursor-pointer text-4xl pr-3 flex justify-center"
 				on:click={toggleLike}
 				class:liked={isLiked}
 			>
@@ -93,7 +96,13 @@
 </main>
 
 <style>
-	.material-icons {
-		font-size: 3em;
+	@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+	:global(.font-heebo) {
+		font-family: 'Heebo', sans-serif;
+	}
+
+	:global(.font-source-code-pro) {
+		font-family: 'Source Code Pro', monospace;
 	}
 </style>
