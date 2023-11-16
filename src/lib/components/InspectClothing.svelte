@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { goto } from 'svelte';
 	const dispatch = createEventDispatcher();
 	export let valittuItemi = null;
 

@@ -4,7 +4,7 @@
 
 	export let valittuFiltteri = [];
 
-	const kategoriat = ['Tops', 'Overalls', 'Bottoms', 'Shoes', 'Hats', 'Accessories'];
+	const categories = ['Tops', 'Overalls', 'Bottoms', 'Shoes', 'Hats', 'Accessories'];
 
 	function toggleFilter(category) {
 		const index = valittuFiltteri.indexOf(category);
@@ -29,7 +29,7 @@
 <div class="fixed inset-0 bg-white bg-opacity-30 flex items-center justify-center">
 	<div class="bg-gray-600 p-5 rounded-lg text-white font-mono text-sm">
 		<div class="space-y-4">
-			{#each categoryt as category}
+			{#each categories as category}
 				<label class="flex items-center">
 					<input
 						type="checkbox"
