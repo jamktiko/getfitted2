@@ -1,3 +1,7 @@
+# Get Fitted is an mobile app produced with SvelteKit. Makers of this app are students from JAMK university and building this application is a part of a 4 month course called Ticorporate.
+
+
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
